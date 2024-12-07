@@ -42,22 +42,20 @@ namespace InspectorLogger
             size: 12
         );
 
-        //
-
-        public static readonly LogStyle SchedulerPositive = new LogStyle(
+        public static readonly LogStyle StatePositive = new LogStyle(
             color: new Color(0.2f, 0.6f, 1.0f),
             bold: true,
             size: 14
         );
 
-        public static readonly LogStyle SchedulerNegative = new LogStyle(
+        public static readonly LogStyle StateNegative = new LogStyle(
             color: new Color(1.0f, 0.4f, 0.2f),
             bold: true,
             italic: true,
             size: 14
         );
 
-        public static readonly LogStyle SchedulerInfo = new LogStyle(
+        public static readonly LogStyle StateInfo = new LogStyle(
             color: new Color(0f, 1.0f, 0.5f),
             italic: true,
             size: 12
