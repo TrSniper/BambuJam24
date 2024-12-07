@@ -80,6 +80,15 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Eat"",
+                    ""type"": ""Button"",
+                    ""id"": ""de926e83-1aac-4d96-ab89-cf354a6a167f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -283,6 +292,17 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""36e52cba-0905-478e-a818-f4bfcb9f3b9a"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Sit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
@@ -294,12 +314,23 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""36e52cba-0905-478e-a818-f4bfcb9f3b9a"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""id"": ""ff38b3e8-c5b0-4ae1-8af9-f1d6e04b02c5"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Sit"",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Eat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b02a05ac-47b6-4a56-a0bc-3fa26fb7a378"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Eat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -377,6 +408,7 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         m_Cat_Sit = m_Cat.FindAction("Sit", throwIfNotFound: true);
         m_Cat_Jump = m_Cat.FindAction("Jump", throwIfNotFound: true);
         m_Cat_Run = m_Cat.FindAction("Run", throwIfNotFound: true);
+        m_Cat_Eat = m_Cat.FindAction("Eat", throwIfNotFound: true);
     }
 
     ~@CatInput()
@@ -449,6 +481,7 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cat_Sit;
     private readonly InputAction m_Cat_Jump;
     private readonly InputAction m_Cat_Run;
+    private readonly InputAction m_Cat_Eat;
     public struct CatActions
     {
         private @CatInput m_Wrapper;
@@ -459,6 +492,7 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         public InputAction @Sit => m_Wrapper.m_Cat_Sit;
         public InputAction @Jump => m_Wrapper.m_Cat_Jump;
         public InputAction @Run => m_Wrapper.m_Cat_Run;
+        public InputAction @Eat => m_Wrapper.m_Cat_Eat;
         public InputActionMap Get() { return m_Wrapper.m_Cat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -486,6 +520,9 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Run.started += instance.OnRun;
             @Run.performed += instance.OnRun;
             @Run.canceled += instance.OnRun;
+            @Eat.started += instance.OnEat;
+            @Eat.performed += instance.OnEat;
+            @Eat.canceled += instance.OnEat;
         }
 
         private void UnregisterCallbacks(ICatActions instance)
@@ -508,6 +545,9 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Run.started -= instance.OnRun;
             @Run.performed -= instance.OnRun;
             @Run.canceled -= instance.OnRun;
+            @Eat.started -= instance.OnEat;
+            @Eat.performed -= instance.OnEat;
+            @Eat.canceled -= instance.OnEat;
         }
 
         public void RemoveCallbacks(ICatActions instance)
@@ -578,5 +618,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         void OnSit(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnEat(InputAction.CallbackContext context);
     }
 }
