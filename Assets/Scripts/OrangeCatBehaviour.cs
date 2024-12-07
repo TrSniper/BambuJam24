@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class OrangeCatBehaviour : MonoBehaviour
 {
@@ -12,7 +13,43 @@ public class OrangeCatBehaviour : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody rigidbody;
 
+    [Header("Input Info")]
+    [SerializeField] private Vector2 lookInput;
+    [SerializeField] private Vector2 moveInput;
+    [SerializeField] private bool isAttackKeyDown;
+    [SerializeField] private bool isInteractKeyDown;
+    [SerializeField] private bool isSitKeyDown;
+    [SerializeField] private bool isJumpKeyDown;
+    [SerializeField] private bool isRunKey;
 
+    private CatInput catInput;
+
+    private void Start()
+    {
+        catInput = new CatInput();
+        catInput.Enable();
+        catInput.Cat.Enable();
+    }
+
+    private void Update()
+    {
+        GetInput();
+    }
+
+#region InputMethods
+
+    private void GetInput()
+    {
+        lookInput = catInput.Cat.Look.ReadValue<Vector2>();
+        moveInput = catInput.Cat.Move.ReadValue<Vector2>();
+        isAttackKeyDown = catInput.Cat.Attack.WasPressedThisFrame();
+        isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
+        isSitKeyDown = catInput.Cat.Sit.WasPressedThisFrame();
+        isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
+        isRunKey = catInput.Cat.Run.IsPressed();
+    }
+
+#endregion
 
 #region AnimationMethods
 
