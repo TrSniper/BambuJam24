@@ -21,8 +21,8 @@ MonoBehaviour:
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
   catRealSpeedMultiplier: 12
-  catStaticRotationSpeed: 1
-  catDynamicRotationSpeed: 6
+  catRotationSpeed: 4
+  catRunningRotationSpeed: 8
   horizontalInputSmoothSpeed: 2
   maxAllowedAngleForMovement: 90
   cameraSensitivity: 20
@@ -37,6 +37,7 @@ MonoBehaviour:
   maxMoveSpeedToIdleJump: 0.1
   maxMoveSpeedToSit: 0.1
   minMoveSpeedToRunJump: 0.9
+  minMoveSpeedToFastRotate: 0.7
   animationParamSpeed: -823668238
   animationParamInteract: -662453572
   animationParamEat: -1566672390

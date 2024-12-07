@@ -131,8 +131,10 @@ namespace CatNamespace
                 rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
             }
 
-            //Rotate cat
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+            var rotationSpeed = currentSpeed > gameConstants.minMoveSpeedToFastRotate ? gameConstants.catRunningRotationSpeed : gameConstants.catRotationSpeed;
+            var baseStep = rotationSpeed * Time.fixedDeltaTime;
+            var slerpT = baseStep / (1f + (angleDifference / 90f));
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, slerpT);
 
             AlignWithSlope();
         }
