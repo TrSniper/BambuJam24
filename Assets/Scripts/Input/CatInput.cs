@@ -46,15 +46,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""6c2ab1b8-8984-453a-af3d-a3c78ae1679a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
@@ -226,50 +217,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""886e731e-7071-4ae4-95c0-e61739dad6fd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ee3d0cd2-254e-47a7-a8cb-bc94d9658c54"",
-                    ""path"": ""<Joystick>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Joystick"",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
@@ -426,7 +373,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         m_Cat = asset.FindActionMap("Cat", throwIfNotFound: true);
         m_Cat_Move = m_Cat.FindAction("Move", throwIfNotFound: true);
         m_Cat_Look = m_Cat.FindAction("Look", throwIfNotFound: true);
-        m_Cat_Attack = m_Cat.FindAction("Attack", throwIfNotFound: true);
         m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
         m_Cat_Sit = m_Cat.FindAction("Sit", throwIfNotFound: true);
         m_Cat_Jump = m_Cat.FindAction("Jump", throwIfNotFound: true);
@@ -499,7 +445,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
     private List<ICatActions> m_CatActionsCallbackInterfaces = new List<ICatActions>();
     private readonly InputAction m_Cat_Move;
     private readonly InputAction m_Cat_Look;
-    private readonly InputAction m_Cat_Attack;
     private readonly InputAction m_Cat_Interact;
     private readonly InputAction m_Cat_Sit;
     private readonly InputAction m_Cat_Jump;
@@ -510,7 +455,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         public CatActions(@CatInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Cat_Move;
         public InputAction @Look => m_Wrapper.m_Cat_Look;
-        public InputAction @Attack => m_Wrapper.m_Cat_Attack;
         public InputAction @Interact => m_Wrapper.m_Cat_Interact;
         public InputAction @Sit => m_Wrapper.m_Cat_Sit;
         public InputAction @Jump => m_Wrapper.m_Cat_Jump;
@@ -530,9 +474,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
@@ -555,9 +496,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
@@ -636,7 +574,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSit(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);

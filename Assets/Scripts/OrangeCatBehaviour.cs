@@ -4,7 +4,7 @@ using UnityEngine;
 public class OrangeCatBehaviour : MonoBehaviour
 {
     public static int AnimationParam_Speed = Animator.StringToHash("Speed");
-    public static int AnimationParam_Attack = Animator.StringToHash("Attack");
+    public static int AnimationParam_Interact = Animator.StringToHash("Interact");
     public static int AnimationParam_Eat = Animator.StringToHash("Eat");
     public static int AnimationParam_Sit = Animator.StringToHash("Sit");
     public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
@@ -16,14 +16,13 @@ public class OrangeCatBehaviour : MonoBehaviour
     [Header("Input Info")]
     [SerializeField] private Vector2 lookInput;
     [SerializeField] private Vector2 moveInput;
-    [SerializeField] private bool isAttackKeyDown;
     [SerializeField] private bool isInteractKeyDown;
     [SerializeField] private bool isSitKeyDown;
     [SerializeField] private bool isJumpKeyDown;
     [SerializeField] private bool isRunKey;
 
     [Header("Animation Info")]
-    [SerializeField] private bool currentAttack;
+    [SerializeField] private bool currentInteract;
     [SerializeField] private bool currentEat;
     [SerializeField] private bool currentSit;
     [SerializeField] private bool currentRunJump;
@@ -48,7 +47,6 @@ public class OrangeCatBehaviour : MonoBehaviour
     {
         lookInput = catInput.Cat.Look.ReadValue<Vector2>();
         moveInput = catInput.Cat.Move.ReadValue<Vector2>();
-        isAttackKeyDown = catInput.Cat.Attack.WasPressedThisFrame();
         isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
         isSitKeyDown = catInput.Cat.Sit.WasPressedThisFrame();
         isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
@@ -64,10 +62,10 @@ public class OrangeCatBehaviour : MonoBehaviour
         animator.SetFloat(AnimationParam_Speed, speed);
     }
 
-    private void SetAttack(bool attack)
+    private void SetInteract(bool attack)
     {
-        currentAttack = attack;
-        animator.SetBool(AnimationParam_Attack, attack);
+        currentInteract = attack;
+        animator.SetBool(AnimationParam_Interact, attack);
     }
 
     private void SetEat(bool eat)
