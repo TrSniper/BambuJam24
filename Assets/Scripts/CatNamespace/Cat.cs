@@ -6,7 +6,8 @@ namespace CatNamespace
     public enum CatState
     {
         Locomotion,
-        Jumping,
+        IdleJumping,
+        RunJumping,
         Interacting,
         Eating,
         Sitting,
@@ -20,10 +21,16 @@ namespace CatNamespace
         public static int AnimationParam_Sit = Animator.StringToHash("Sit");
         public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
 
-        public static float JumpAnimationDuration = 0.925f;
-        public static float InteractAnimationDuration = 0.825f;
-        public static float EatAnimationDuration = 0.95f;
-        public static float StandUpAnimationDuration = 0.825f;
+        public static float RunJumpAnimationDuration = 2.6f;
+        public static float InteractAnimationDuration = 1.45f;
+        public static float EatAnimationDuration = 5f;
+        public static float StandUpAnimationDuration = 1.4f;
+
+        public static float MaxMoveSpeedToEat = 0.1f;
+        public static float MaxMoveSpeedToInteract = 0.1f;
+        public static float MaxMoveSpeedToIdleJump = 0.1f;
+        public static float MaxMoveSpeedToSit = 0.1f;
+        public static float MinMoveSpeedToRunJump = 0.9f;
 
         [Header("References")]
         [SerializeField] private Animator animator;
@@ -31,6 +38,7 @@ namespace CatNamespace
 
         [Header("State Info")]
         [SerializeField] private CatState currentState;
+        [SerializeField] private float currentSpeed;
 
         [Header("Input Info")]
         [SerializeField] private Vector2 lookInput;
@@ -38,15 +46,24 @@ namespace CatNamespace
         [SerializeField] private bool isInteractKeyDown;
         [SerializeField] private bool isSitKeyDown;
         [SerializeField] private bool isJumpKeyDown;
+        [SerializeField] private bool isEatKeyDown;
         [SerializeField] private bool isRunKey;
 
+        public float GetCurrentSpeed() => currentSpeed;
         public Vector2 GetLookInput() => lookInput;
         public Vector2 GetMoveInput() => moveInput;
         public bool IsInteractKeyDown() => isInteractKeyDown;
         public bool IsSitKeyDown() => isSitKeyDown;
         public bool IsJumpKeyDown() => isJumpKeyDown;
+        public bool IsEatKeyDown() => isEatKeyDown;
         public bool IsRunKey() => isRunKey;
-        public bool StateMachineOnly_SetCurrentState(CatState state) => currentState == state;
+        public void StateMachineOnly_SetCurrentState(CatState state) => currentState = state;
+
+        public bool CanEat() => currentSpeed <= MaxMoveSpeedToEat;
+        public bool CanInteract() => currentSpeed <= MaxMoveSpeedToInteract;
+        public bool CanSit() => currentSpeed <= MaxMoveSpeedToSit;
+        public bool CanIdleJump() => currentSpeed <= MaxMoveSpeedToIdleJump;
+        public bool CanRunJump() => currentSpeed >= MinMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
@@ -60,7 +77,8 @@ namespace CatNamespace
             stateMachine = new CatStateMachine(this);
 
             stateMachine.RegisterState(CatState.Locomotion, new CatLocomotionState(this, stateMachine));
-            stateMachine.RegisterState(CatState.Jumping, new CatJumpingState(this, stateMachine));
+            //todo: stateMachine.RegisterState(CatState.IdleJumping, new CatIdleJumpingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.RunJumping, new CatRunJumpingState(this, stateMachine));
             stateMachine.RegisterState(CatState.Interacting, new CatInteractingState(this, stateMachine));
             stateMachine.RegisterState(CatState.Eating, new CatEatingState(this, stateMachine));
             stateMachine.RegisterState(CatState.Sitting, new CatSittingState(this, stateMachine));
@@ -81,6 +99,7 @@ namespace CatNamespace
             lookInput = catInput.Cat.Look.ReadValue<Vector2>();
             moveInput = catInput.Cat.Move.ReadValue<Vector2>();
             isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
+            isEatKeyDown = catInput.Cat.Eat.WasPressedThisFrame();
             isSitKeyDown = catInput.Cat.Sit.WasPressedThisFrame();
             isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
             isRunKey = catInput.Cat.Run.IsPressed();
@@ -92,6 +111,7 @@ namespace CatNamespace
 
         public void SetAnimatorSpeed(float speed)
         {
+            currentSpeed = speed;
             animator.SetFloat(AnimationParam_Speed, speed);
         }
 

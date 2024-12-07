@@ -3,9 +3,9 @@ using InspectorLogger;
 
 namespace CatNamespace
 {
-    public class CatJumpingState : CatBaseState
+    public class CatRunJumpingState : CatBaseState
     {
-        public CatJumpingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
+        public CatRunJumpingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
 
         private bool isJumping;
 
@@ -16,7 +16,7 @@ namespace CatNamespace
             cat.PlayRunJumpAnimation();
 
             isJumping = true;
-            await UniTask.WaitForSeconds(Cat.JumpAnimationDuration);
+            await UniTask.WaitForSeconds(Cat.RunJumpAnimationDuration);
             isJumping = false;
 
             stateMachine.ChangeState(CatState.Locomotion);
