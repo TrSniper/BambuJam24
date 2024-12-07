@@ -1,13 +1,17 @@
-﻿namespace CatNamespace
+﻿using ScriptableObjects;
+
+namespace CatNamespace
 {
     public abstract class CatBaseState
     {
         protected Cat cat;
+        protected GameConstants gameConstants;
         protected CatStateMachine stateMachine;
 
-        protected CatBaseState(Cat cat, CatStateMachine stateMachine)
+        protected CatBaseState(Cat cat, GameConstants gameConstants, CatStateMachine stateMachine)
         {
             this.cat = cat;
+            this.gameConstants = gameConstants;
             this.stateMachine = stateMachine;
         }
 

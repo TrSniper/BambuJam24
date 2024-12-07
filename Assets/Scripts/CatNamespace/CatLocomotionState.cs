@@ -1,10 +1,11 @@
 ﻿using InspectorLogger;
+using ScriptableObjects;
 
 namespace CatNamespace
 {
     public class CatLocomotionState : CatBaseState
     {
-        public CatLocomotionState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
+        public CatLocomotionState(Cat cat, GameConstants gameConstants, CatStateMachine stateMachine) : base(cat, gameConstants, stateMachine) { }
 
         public override void Enter()
         {
@@ -15,9 +16,6 @@ namespace CatNamespace
         public override void Update()
         {
             base.Update();
-            var moveInput = cat.GetMoveInput();
-
-            cat.SetAnimatorSpeed(moveInput.magnitude);
 
             if (cat.IsJumpKeyDown() && cat.CanRunJump()) stateMachine.ChangeState(CatState.RunJumping);
             else if (cat.IsInteractKeyDown() && cat.CanInteract()) stateMachine.ChangeState(CatState.Interacting);
