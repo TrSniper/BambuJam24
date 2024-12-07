@@ -55,15 +55,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Sit"",
-                    ""type"": ""Button"",
-                    ""id"": ""27c5f898-bc57-4ee1-8800-db469aca5fe3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
@@ -292,28 +283,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""36e52cba-0905-478e-a818-f4bfcb9f3b9a"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Sit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4f4649ac-64a8-4a73-af11-b3faef356a4d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Sit"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ff38b3e8-c5b0-4ae1-8af9-f1d6e04b02c5"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -405,7 +374,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         m_Cat_Move = m_Cat.FindAction("Move", throwIfNotFound: true);
         m_Cat_Look = m_Cat.FindAction("Look", throwIfNotFound: true);
         m_Cat_Interact = m_Cat.FindAction("Interact", throwIfNotFound: true);
-        m_Cat_Sit = m_Cat.FindAction("Sit", throwIfNotFound: true);
         m_Cat_Jump = m_Cat.FindAction("Jump", throwIfNotFound: true);
         m_Cat_Run = m_Cat.FindAction("Run", throwIfNotFound: true);
         m_Cat_Eat = m_Cat.FindAction("Eat", throwIfNotFound: true);
@@ -478,7 +446,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Cat_Move;
     private readonly InputAction m_Cat_Look;
     private readonly InputAction m_Cat_Interact;
-    private readonly InputAction m_Cat_Sit;
     private readonly InputAction m_Cat_Jump;
     private readonly InputAction m_Cat_Run;
     private readonly InputAction m_Cat_Eat;
@@ -489,7 +456,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Cat_Move;
         public InputAction @Look => m_Wrapper.m_Cat_Look;
         public InputAction @Interact => m_Wrapper.m_Cat_Interact;
-        public InputAction @Sit => m_Wrapper.m_Cat_Sit;
         public InputAction @Jump => m_Wrapper.m_Cat_Jump;
         public InputAction @Run => m_Wrapper.m_Cat_Run;
         public InputAction @Eat => m_Wrapper.m_Cat_Eat;
@@ -511,9 +477,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Sit.started += instance.OnSit;
-            @Sit.performed += instance.OnSit;
-            @Sit.canceled += instance.OnSit;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -536,9 +499,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Sit.started -= instance.OnSit;
-            @Sit.performed -= instance.OnSit;
-            @Sit.canceled -= instance.OnSit;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -615,7 +575,6 @@ public partial class @CatInput: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnSit(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnEat(InputAction.CallbackContext context);

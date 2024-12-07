@@ -12,7 +12,6 @@ namespace CatNamespace
         RunJumping,
         Interacting,
         Eating,
-        Sitting,
     }
 
     public class Cat : MonoBehaviour
@@ -31,7 +30,6 @@ namespace CatNamespace
         [SerializeField] private Vector2 lookInput;
         [SerializeField] private Vector2 moveInput;
         [SerializeField] private bool isInteractKeyDown;
-        [SerializeField] private bool isSitKeyDown;
         [SerializeField] private bool isJumpKeyDown;
         [SerializeField] private bool isEatKeyDown;
         [SerializeField] private bool isRunKey;
@@ -40,7 +38,6 @@ namespace CatNamespace
         public Vector2 GetLookInput() => lookInput;
         public Vector2 GetMoveInput() => moveInput;
         public bool IsInteractKeyDown() => isInteractKeyDown;
-        public bool IsSitKeyDown() => isSitKeyDown;
         public bool IsJumpKeyDown() => isJumpKeyDown;
         public bool IsEatKeyDown() => isEatKeyDown;
         public bool IsRunKey() => isRunKey;
@@ -64,11 +61,10 @@ namespace CatNamespace
             stateMachine = new CatStateMachine(this);
 
             stateMachine.RegisterState(CatState.Locomotion, new CatLocomotionState(this, gameConstants, stateMachine));
-            //todo: stateMachine.RegisterState(CatState.IdleJumping, new CatIdleJumpingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.IdleJumping, new CatIdleJumpingState(this, gameConstants, stateMachine));
             stateMachine.RegisterState(CatState.RunJumping, new CatRunJumpingState(this, gameConstants, stateMachine));
             stateMachine.RegisterState(CatState.Interacting, new CatInteractingState(this, gameConstants, stateMachine));
             stateMachine.RegisterState(CatState.Eating, new CatEatingState(this, gameConstants, stateMachine));
-            stateMachine.RegisterState(CatState.Sitting, new CatSittingState(this, gameConstants, stateMachine));
 
             stateMachine.ChangeState(CatState.Locomotion);
         }
@@ -76,13 +72,13 @@ namespace CatNamespace
         private void Update()
         {
             GetInput();
-            UpdateSpeed();
+            UpdateSpeeds();
             stateMachine.Update();
         }
 
         private void FixedUpdate()
         {
-            MoveCat();
+            MoveAndRotateCat();
         }
 
         private void GetInput()
@@ -91,12 +87,11 @@ namespace CatNamespace
             moveInput = catInput.Cat.Move.ReadValue<Vector2>();
             isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
             isEatKeyDown = catInput.Cat.Eat.WasPressedThisFrame();
-            isSitKeyDown = catInput.Cat.Sit.WasPressedThisFrame();
             isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
             isRunKey = catInput.Cat.Run.IsPressed();
         }
 
-        private void UpdateSpeed()
+        private void UpdateSpeeds()
         {
             var targetSpeed = moveInput.magnitude * (isRunKey ? gameConstants.maxRunSpeed : gameConstants.maxWalkSpeed);
 
@@ -113,18 +108,63 @@ namespace CatNamespace
             }
 
             SetAnimatorSpeed(currentSpeed);
+            SetAnimatorHorizontalInput();
         }
 
-        private void MoveCat()
+        private void MoveAndRotateCat()
         {
             var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
             moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
             moveDirection.y = 0f;
 
-            var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
-            rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
+            //Do not move if do not look at the moveDirection
+            var angleDifference = Vector3.Angle(transform.forward, moveDirection);
 
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * 10f);
+            if (angleDifference > gameConstants.maxAllowedAngleForMovement)
+            {
+                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+                rigidbody.linearVelocity = new Vector3(0, rigidbody.linearVelocity.y, 0);
+            }
+
+            else
+            {
+                var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
+                rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
+
+                //Rotate cat
+                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+            }
+
+            AlignWithSlope();
+        }
+
+        private void AlignWithSlope()
+        {
+            var rayOrigin = transform.position + Vector3.up * 0.5f;
+
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 5f, gameConstants.groundLayer))
+            {
+                var groundNormal = hit.normal;
+                var projectedNormal = Vector3.ProjectOnPlane(groundNormal, transform.right);
+
+                if (projectedNormal.sqrMagnitude > 0.0001f)
+                {
+                    var angle = Vector3.SignedAngle(transform.up, projectedNormal, transform.right);
+                    var pitchRotation = Quaternion.AngleAxis(angle, transform.right);
+                    var targetRotation = pitchRotation * transform.rotation;
+                    transform.rotation = targetRotation;
+                }
+
+                else
+                {
+                    Debug.LogError("Ground hit but normal is too small");
+                }
+            }
+
+            else
+            {
+                Debug.LogError("No ground hit");
+            }
         }
 
 #region AnimationMethods
@@ -133,6 +173,25 @@ namespace CatNamespace
         {
             currentSpeed = speed;
             animator.SetFloat(gameConstants.animationParamSpeed, speed);
+        }
+
+        private void SetAnimatorHorizontalInput()
+        {
+            var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
+            moveDirection.y = 0f;
+
+            var angleDifference = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);
+            var targetHorizontalInput = Mathf.Clamp(angleDifference / 90f, -1f, 1f);
+            var currentHorizontalInput = animator.GetFloat(gameConstants.animationParamHorizontalInput);
+
+            var smoothedHorizontalInput = Mathf.MoveTowards(
+                currentHorizontalInput,
+                targetHorizontalInput,
+                gameConstants.horizontalInputSmoothSpeed * Time.deltaTime
+            );
+
+            animator.SetFloat(gameConstants.animationParamHorizontalInput, smoothedHorizontalInput);
         }
 
         public void PlayInteractAnimation()
@@ -147,22 +206,16 @@ namespace CatNamespace
             animator.SetTrigger(gameConstants.animationParamEat);
         }
 
-        public void PlaySitAnimation()
-        {
-            this.Log("PlaySitAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(gameConstants.animationParamSit, true);
-        }
-
-        public void PlayStandUpAnimation()
-        {
-            this.Log("PlayStandUpAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(gameConstants.animationParamSit, false);
-        }
-
         public void PlayRunJumpAnimation()
         {
             this.Log("PlayRunJumpAnimation", LogStyles.AnimationPositive);
             animator.SetTrigger(gameConstants.animationParamRunJump);
+        }
+
+        public void PlayIdleJumpAnimation()
+        {
+            this.Log("PlayIdleJumpAnimation", LogStyles.AnimationPositive);
+            animator.SetTrigger(gameConstants.animationParamIdleJump);
         }
 
 #endregion AnimationMethods
