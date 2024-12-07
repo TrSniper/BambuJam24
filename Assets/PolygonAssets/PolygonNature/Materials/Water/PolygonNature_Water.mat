@@ -141,7 +141,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     - _edgeFoamAmount: 18.89
-    - _edgeFoamCutoff: 0.32
+    - _edgeFoamCutoff: 0.28
     - _fakeSpecular: -40
     - _waterDepth: 1.6
     - _waterSmoothness: 1.29
