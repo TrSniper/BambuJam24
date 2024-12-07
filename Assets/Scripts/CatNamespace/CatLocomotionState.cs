@@ -16,9 +16,6 @@ namespace CatNamespace
         public override void Update()
         {
             base.Update();
-            var moveInput = cat.GetMoveInput();
-
-            cat.SetAnimatorSpeed(moveInput.magnitude);
 
             if (cat.IsJumpKeyDown() && cat.CanRunJump()) stateMachine.ChangeState(CatState.RunJumping);
             else if (cat.IsInteractKeyDown() && cat.CanInteract()) stateMachine.ChangeState(CatState.Interacting);

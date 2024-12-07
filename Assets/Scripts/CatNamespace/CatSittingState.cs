@@ -22,7 +22,7 @@ namespace CatNamespace
             if (cat.IsSitKeyDown())
             {
                 cat.PlayStandUpAnimation();
-                await UniTask.WaitForSeconds(gameConstants.StandUpAnimationDuration);
+                await UniTask.WaitForSeconds(gameConstants.standUpAnimationDuration);
                 stateMachine.ChangeState(CatState.Locomotion);
             }
         }

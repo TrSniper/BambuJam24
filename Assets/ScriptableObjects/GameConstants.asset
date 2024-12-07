@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5488f4835d65432bb74fb1f94db590c5, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  AnimationParam_Speed: -823668238
-  AnimationParam_Interact: -662453572
-  AnimationParam_Eat: -1566672390
-  AnimationParam_Sit: 1928080432
-  AnimationParam_RunJump: 1913521290
-  RunJumpAnimationDuration: 2.6
-  InteractAnimationDuration: 1.45
-  EatAnimationDuration: 5
-  StandUpAnimationDuration: 1.4
-  MaxMoveSpeedToEat: 0.1
-  MaxMoveSpeedToInteract: 0.1
-  MaxMoveSpeedToIdleJump: 0.1
-  MaxMoveSpeedToSit: 0.1
-  MinMoveSpeedToRunJump: 0.9
+  acceleration: 1
+  runningAcceleration: 1.6
+  deceleration: 1
+  maxRunSpeed: 1
+  maxWalkSpeed: 0.5
+  runJumpAnimationDuration: 2.6
+  interactAnimationDuration: 1.45
+  eatAnimationDuration: 5
+  standUpAnimationDuration: 1.4
+  maxMoveSpeedToEat: 0.1
+  maxMoveSpeedToInteract: 0.1
+  maxMoveSpeedToIdleJump: 0.1
+  maxMoveSpeedToSit: 0.1
+  minMoveSpeedToRunJump: 0.9
+  animationParamSpeed: -823668238
+  animationParamInteract: -662453572
+  animationParamEat: -1566672390
+  animationParamSit: 1928080432
+  animationParamRunJump: 1913521290

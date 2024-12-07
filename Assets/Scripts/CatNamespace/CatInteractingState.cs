@@ -17,7 +17,7 @@ namespace CatNamespace
             cat.PlayInteractAnimation();
 
             isInteracting = true;
-            await UniTask.WaitForSeconds(gameConstants.InteractAnimationDuration);
+            await UniTask.WaitForSeconds(gameConstants.interactAnimationDuration);
             isInteracting = false;
 
             stateMachine.ChangeState(CatState.Locomotion);

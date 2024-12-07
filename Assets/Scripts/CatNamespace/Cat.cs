@@ -44,11 +44,11 @@ namespace CatNamespace
         public bool IsRunKey() => isRunKey;
         public void StateMachineOnly_SetCurrentState(CatState state) => currentState = state;
 
-        public bool CanEat() => currentSpeed <= gameConstants.MaxMoveSpeedToEat;
-        public bool CanInteract() => currentSpeed <= gameConstants.MaxMoveSpeedToInteract;
-        public bool CanSit() => currentSpeed <= gameConstants.MaxMoveSpeedToSit;
-        public bool CanIdleJump() => currentSpeed <= gameConstants.MaxMoveSpeedToIdleJump;
-        public bool CanRunJump() => currentSpeed >= gameConstants.MinMoveSpeedToRunJump;
+        public bool CanEat() => currentSpeed <= gameConstants.maxMoveSpeedToEat;
+        public bool CanInteract() => currentSpeed <= gameConstants.maxMoveSpeedToInteract;
+        public bool CanSit() => currentSpeed <= gameConstants.maxMoveSpeedToSit;
+        public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump;
+        public bool CanRunJump() => currentSpeed >= gameConstants.minMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
@@ -74,10 +74,9 @@ namespace CatNamespace
         private void Update()
         {
             GetInput();
+            UpdateSpeed();
             stateMachine.Update();
         }
-
-#region InputMethods
 
         private void GetInput()
         {
@@ -90,44 +89,61 @@ namespace CatNamespace
             isRunKey = catInput.Cat.Run.IsPressed();
         }
 
-#endregion
+        private void UpdateSpeed()
+        {
+            var targetSpeed = moveInput.magnitude * (isRunKey ? gameConstants.maxRunSpeed : gameConstants.maxWalkSpeed);
+
+            if (currentSpeed < targetSpeed)
+            {
+                currentSpeed += (isRunKey ? gameConstants.runningAcceleration : gameConstants.acceleration) * Time.deltaTime;
+                currentSpeed = Mathf.Min(currentSpeed, targetSpeed);
+            }
+
+            else if (currentSpeed > targetSpeed)
+            {
+                currentSpeed -= gameConstants.deceleration * Time.deltaTime;
+                currentSpeed = Mathf.Max(currentSpeed, targetSpeed);
+            }
+
+            SetAnimatorSpeed(currentSpeed);
+        }
 
 #region AnimationMethods
 
         public void SetAnimatorSpeed(float speed)
         {
             currentSpeed = speed;
-            animator.SetFloat(gameConstants.AnimationParam_Speed, speed);
+            animator.SetFloat(gameConstants.animationParamSpeed, speed);
         }
 
         public void PlayInteractAnimation()
         {
             this.Log("PlayInteractAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(gameConstants.AnimationParam_Interact);
+            animator.SetTrigger(gameConstants.animationParamInteract);
         }
 
         public void PlayEatAnimation()
         {
             this.Log("PlayEatAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(gameConstants.AnimationParam_Eat);
+            animator.SetTrigger(gameConstants.animationParamEat);
         }
 
         public void PlaySitAnimation()
         {
             this.Log("PlaySitAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(gameConstants.AnimationParam_Sit, true);
+            animator.SetBool(gameConstants.animationParamSit, true);
         }
 
         public void PlayStandUpAnimation()
         {
             this.Log("PlayStandUpAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(gameConstants.AnimationParam_Sit, false);
+            animator.SetBool(gameConstants.animationParamSit, false);
         }
 
         public void PlayRunJumpAnimation()
         {
             this.Log("PlayRunJumpAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(gameConstants.AnimationParam_RunJump);
+            animator.SetTrigger(gameConstants.animationParamRunJump);
         }
 
 #endregion AnimationMethods

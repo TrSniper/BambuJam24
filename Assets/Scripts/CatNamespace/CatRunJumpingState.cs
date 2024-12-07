@@ -17,7 +17,7 @@ namespace CatNamespace
             cat.PlayRunJumpAnimation();
 
             isJumping = true;
-            await UniTask.WaitForSeconds(gameConstants.RunJumpAnimationDuration);
+            await UniTask.WaitForSeconds(gameConstants.runJumpAnimationDuration);
             isJumping = false;
 
             stateMachine.ChangeState(CatState.Locomotion);

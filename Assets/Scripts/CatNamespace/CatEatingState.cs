@@ -17,7 +17,7 @@ namespace CatNamespace
             cat.PlayEatAnimation();
 
             isEating = true;
-            await UniTask.WaitForSeconds(gameConstants.EatAnimationDuration);
+            await UniTask.WaitForSeconds(gameConstants.eatAnimationDuration);
             isEating = false;
 
             stateMachine.ChangeState(CatState.Locomotion);
