@@ -1,11 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using InspectorLogger;
+using ScriptableObjects;
 
 namespace CatNamespace
 {
     public class CatEatingState : CatBaseState
     {
-        public CatEatingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
+        public CatEatingState(Cat cat, GameConstants gameConstants, CatStateMachine stateMachine) : base(cat, gameConstants, stateMachine) { }
 
         private bool isEating;
 
@@ -16,7 +17,7 @@ namespace CatNamespace
             cat.PlayEatAnimation();
 
             isEating = true;
-            await UniTask.WaitForSeconds(Cat.EatAnimationDuration);
+            await UniTask.WaitForSeconds(gameConstants.eatAnimationDuration);
             isEating = false;
 
             stateMachine.ChangeState(CatState.Locomotion);
