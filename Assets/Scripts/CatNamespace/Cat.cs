@@ -9,9 +9,7 @@ namespace CatNamespace
         Jumping,
         Interacting,
         Eating,
-        SittingDown,
         Sitting,
-        StandingUp,
     }
 
     public class Cat : MonoBehaviour
@@ -22,6 +20,7 @@ namespace CatNamespace
         public static int AnimationParam_Sit = Animator.StringToHash("Sit");
         public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
 
+        public static float JumpAnimationDuration = 0.925f;
         public static float InteractAnimationDuration = 0.825f;
         public static float EatAnimationDuration = 0.95f;
         public static float StandUpAnimationDuration = 0.825f;
@@ -29,6 +28,9 @@ namespace CatNamespace
         [Header("References")]
         [SerializeField] private Animator animator;
         [SerializeField] private Rigidbody rigidbody;
+
+        [Header("State Info")]
+        [SerializeField] private CatState currentState;
 
         [Header("Input Info")]
         [SerializeField] private Vector2 lookInput;
@@ -44,6 +46,7 @@ namespace CatNamespace
         public bool IsSitKeyDown() => isSitKeyDown;
         public bool IsJumpKeyDown() => isJumpKeyDown;
         public bool IsRunKey() => isRunKey;
+        public bool StateMachineOnly_SetCurrentState(CatState state) => currentState == state;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
@@ -54,7 +57,13 @@ namespace CatNamespace
             catInput.Enable();
             catInput.Cat.Enable();
 
-            stateMachine = new CatStateMachine();
+            stateMachine = new CatStateMachine(this);
+
+            stateMachine.RegisterState(CatState.Locomotion, new CatLocomotionState(this, stateMachine));
+            stateMachine.RegisterState(CatState.Jumping, new CatJumpingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.Interacting, new CatInteractingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.Eating, new CatEatingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.Sitting, new CatSittingState(this, stateMachine));
 
             stateMachine.ChangeState(CatState.Locomotion);
         }

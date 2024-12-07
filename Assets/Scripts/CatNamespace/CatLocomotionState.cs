@@ -2,7 +2,7 @@
 
 namespace CatNamespace
 {
-    public class CatLocomotionState : CatStateBase
+    public class CatLocomotionState : CatBaseState
     {
         public CatLocomotionState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
 
@@ -31,14 +31,15 @@ namespace CatNamespace
 
             else if (cat.IsSitKeyDown())
             {
-                stateMachine.ChangeState(CatState.SittingDown);
+                stateMachine.ChangeState(CatState.Sitting);
             }
         }
 
-        public override void Exit()
+        public override bool Exit()
         {
             base.Exit();
             cat.Log("Exiting Locomotion State", LogStyles.StateNegative);
+            return true;
         }
     }
 }
