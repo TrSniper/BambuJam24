@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5764137039489180225}
@@ -52,12 +52,12 @@ MonoBehaviour:
   gameConstants: {fileID: 11400000, guid: 9600a6a6fc0829b4193d093367bb8906, type: 2}
   animator: {fileID: 4650312521485465908}
   rigidbody: {fileID: 5313723701562574671}
+  camera: {fileID: 0}
   currentState: 0
   currentSpeed: 0
   lookInput: {x: 0, y: 0}
   moveInput: {x: 0, y: 0}
   isInteractKeyDown: 0
-  isSitKeyDown: 0
   isJumpKeyDown: 0
   isEatKeyDown: 0
   isRunKey: 0

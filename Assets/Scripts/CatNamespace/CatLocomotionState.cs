@@ -17,10 +17,10 @@ namespace CatNamespace
         {
             base.Update();
 
-            if (cat.IsJumpKeyDown() && cat.CanRunJump()) stateMachine.ChangeState(CatState.RunJumping);
-            else if (cat.IsInteractKeyDown() && cat.CanInteract()) stateMachine.ChangeState(CatState.Interacting);
+            if (cat.IsInteractKeyDown() && cat.CanInteract()) stateMachine.ChangeState(CatState.Interacting);
             else if (cat.IsEatKeyDown() && cat.CanEat()) stateMachine.ChangeState(CatState.Eating);
-            else if (cat.IsSitKeyDown() && cat.CanSit()) stateMachine.ChangeState(CatState.Sitting);
+            else if (cat.IsJumpKeyDown() && cat.CanRunJump()) stateMachine.ChangeState(CatState.RunJumping);
+            if (cat.IsJumpKeyDown() && cat.CanIdleJump()) stateMachine.ChangeState(CatState.IdleJumping);
         }
 
         public override bool Exit()

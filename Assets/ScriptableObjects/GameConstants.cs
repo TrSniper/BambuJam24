@@ -22,10 +22,10 @@ namespace ScriptableObjects
         public bool isYInverted;
 
         [Header("Animation Durations")]
+        public float idleJumpAnimationDuration;
         public float runJumpAnimationDuration;
         public float interactAnimationDuration;
         public float eatAnimationDuration;
-        public float standUpAnimationDuration;
 
         [Header("Movement Speeds")]
         public float maxMoveSpeedToEat;
@@ -38,8 +38,8 @@ namespace ScriptableObjects
         public int animationParamSpeed = Animator.StringToHash("Speed");
         public int animationParamInteract = Animator.StringToHash("Interact");
         public int animationParamEat = Animator.StringToHash("Eat");
-        public int animationParamSit = Animator.StringToHash("Sit");
         public int animationParamRunJump = Animator.StringToHash("RunJump");
+        public int animationParamIdleJump = Animator.StringToHash("IdleJump");
         public int animationParamHorizontalInput = Animator.StringToHash("HorizontalInput");
     }
 }
