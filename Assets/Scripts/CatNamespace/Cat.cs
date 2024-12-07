@@ -122,7 +122,6 @@ namespace CatNamespace
 
             if (angleDifference > gameConstants.maxAllowedAngleForMovement)
             {
-                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
                 rigidbody.linearVelocity = new Vector3(0, rigidbody.linearVelocity.y, 0);
             }
 
@@ -130,10 +129,10 @@ namespace CatNamespace
             {
                 var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
                 rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
-
-                //Rotate cat
-                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
             }
+
+            //Rotate cat
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
 
             AlignWithSlope();
         }

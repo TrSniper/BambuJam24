@@ -20,13 +20,14 @@ MonoBehaviour:
   deceleration: 1
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
-  catRealSpeedMultiplier: 6
-  catRotationSpeed: 1
-  horizontalInputSmoothSpeed: 4
+  catRealSpeedMultiplier: 12
+  catStaticRotationSpeed: 1
+  catDynamicRotationSpeed: 6
+  horizontalInputSmoothSpeed: 2
   maxAllowedAngleForMovement: 90
-  cameraSensitivity: 4
+  cameraSensitivity: 20
   isXInverted: 0
-  isYInverted: 0
+  isYInverted: 1
   idleJumpAnimationDuration: 0
   runJumpAnimationDuration: 2.6
   interactAnimationDuration: 1.45
