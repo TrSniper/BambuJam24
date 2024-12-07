@@ -126,7 +126,7 @@ namespace CatNamespace
             rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
 
             //Rotate cat
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed);
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
         }
 
 #region AnimationMethods

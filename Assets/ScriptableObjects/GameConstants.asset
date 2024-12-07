@@ -18,7 +18,7 @@ MonoBehaviour:
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
   catRealSpeedMultiplier: 1
-  catRotationSpeed: 0
+  catRotationSpeed: 1
   horizontalInputSmoothSpeed: 4
   cameraSensitivity: 4
   isXInverted: 0
