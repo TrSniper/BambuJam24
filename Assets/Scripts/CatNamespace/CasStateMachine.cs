@@ -4,17 +4,25 @@ namespace CatNamespace
 {
     public class CatStateMachine
     {
-        private CatStateBase currentState;
-        private Dictionary<CatState, CatStateBase> states = new();
+        private Cat cat;
+        private CatBaseState currentState;
+        private Dictionary<CatState, CatBaseState> states = new();
 
-        public void RegisterState(CatState stateKey, CatStateBase state)
+        public CatStateMachine(Cat cat)
+        {
+            this.cat = cat;
+        }
+
+        public void RegisterState(CatState stateKey, CatBaseState state)
         {
             states[stateKey] = state;
         }
 
         public void ChangeState(CatState newState)
         {
-            currentState?.Exit();
+            if (currentState != null) if (!currentState.Exit()) return;
+
+            cat.StateMachineOnly_SetCurrentState(newState);
             currentState = states[newState];
             currentState.Enter();
         }

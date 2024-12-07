@@ -2,7 +2,7 @@
 
 namespace CatNamespace
 {
-    public class CatLocomotionState : CatStateBase
+    public class CatLocomotionState : CatBaseState
     {
         public CatLocomotionState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
 
@@ -19,26 +19,16 @@ namespace CatNamespace
 
             cat.SetAnimatorSpeed(moveInput.magnitude);
 
-            if (cat.IsJumpKeyDown())
-            {
-                stateMachine.ChangeState(CatState.Jumping);
-            }
-
-            else if (cat.IsInteractKeyDown())
-            {
-                stateMachine.ChangeState(CatState.Interacting);
-            }
-
-            else if (cat.IsSitKeyDown())
-            {
-                stateMachine.ChangeState(CatState.SittingDown);
-            }
+            if (cat.IsJumpKeyDown()) stateMachine.ChangeState(CatState.Jumping);
+            else if (cat.IsInteractKeyDown()) stateMachine.ChangeState(CatState.Interacting);
+            else if (cat.IsSitKeyDown()) stateMachine.ChangeState(CatState.Sitting);
         }
 
-        public override void Exit()
+        public override bool Exit()
         {
             base.Exit();
             cat.Log("Exiting Locomotion State", LogStyles.StateNegative);
+            return true;
         }
     }
 }
