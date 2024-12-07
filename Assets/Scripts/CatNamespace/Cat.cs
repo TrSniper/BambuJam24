@@ -1,4 +1,5 @@
 ﻿using InspectorLogger;
+using ScriptableObjects;
 using UnityEngine;
 
 namespace CatNamespace
@@ -15,24 +16,8 @@ namespace CatNamespace
 
     public class Cat : MonoBehaviour
     {
-        public static int AnimationParam_Speed = Animator.StringToHash("Speed");
-        public static int AnimationParam_Interact = Animator.StringToHash("Interact");
-        public static int AnimationParam_Eat = Animator.StringToHash("Eat");
-        public static int AnimationParam_Sit = Animator.StringToHash("Sit");
-        public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
-
-        public static float RunJumpAnimationDuration = 2.6f;
-        public static float InteractAnimationDuration = 1.45f;
-        public static float EatAnimationDuration = 5f;
-        public static float StandUpAnimationDuration = 1.4f;
-
-        public static float MaxMoveSpeedToEat = 0.1f;
-        public static float MaxMoveSpeedToInteract = 0.1f;
-        public static float MaxMoveSpeedToIdleJump = 0.1f;
-        public static float MaxMoveSpeedToSit = 0.1f;
-        public static float MinMoveSpeedToRunJump = 0.9f;
-
         [Header("References")]
+        [SerializeField] private GameConstants gameConstants;
         [SerializeField] private Animator animator;
         [SerializeField] private Rigidbody rigidbody;
 
@@ -59,11 +44,11 @@ namespace CatNamespace
         public bool IsRunKey() => isRunKey;
         public void StateMachineOnly_SetCurrentState(CatState state) => currentState = state;
 
-        public bool CanEat() => currentSpeed <= MaxMoveSpeedToEat;
-        public bool CanInteract() => currentSpeed <= MaxMoveSpeedToInteract;
-        public bool CanSit() => currentSpeed <= MaxMoveSpeedToSit;
-        public bool CanIdleJump() => currentSpeed <= MaxMoveSpeedToIdleJump;
-        public bool CanRunJump() => currentSpeed >= MinMoveSpeedToRunJump;
+        public bool CanEat() => currentSpeed <= gameConstants.MaxMoveSpeedToEat;
+        public bool CanInteract() => currentSpeed <= gameConstants.MaxMoveSpeedToInteract;
+        public bool CanSit() => currentSpeed <= gameConstants.MaxMoveSpeedToSit;
+        public bool CanIdleJump() => currentSpeed <= gameConstants.MaxMoveSpeedToIdleJump;
+        public bool CanRunJump() => currentSpeed >= gameConstants.MinMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
@@ -76,12 +61,12 @@ namespace CatNamespace
 
             stateMachine = new CatStateMachine(this);
 
-            stateMachine.RegisterState(CatState.Locomotion, new CatLocomotionState(this, stateMachine));
+            stateMachine.RegisterState(CatState.Locomotion, new CatLocomotionState(this, gameConstants, stateMachine));
             //todo: stateMachine.RegisterState(CatState.IdleJumping, new CatIdleJumpingState(this, stateMachine));
-            stateMachine.RegisterState(CatState.RunJumping, new CatRunJumpingState(this, stateMachine));
-            stateMachine.RegisterState(CatState.Interacting, new CatInteractingState(this, stateMachine));
-            stateMachine.RegisterState(CatState.Eating, new CatEatingState(this, stateMachine));
-            stateMachine.RegisterState(CatState.Sitting, new CatSittingState(this, stateMachine));
+            stateMachine.RegisterState(CatState.RunJumping, new CatRunJumpingState(this, gameConstants, stateMachine));
+            stateMachine.RegisterState(CatState.Interacting, new CatInteractingState(this, gameConstants, stateMachine));
+            stateMachine.RegisterState(CatState.Eating, new CatEatingState(this, gameConstants, stateMachine));
+            stateMachine.RegisterState(CatState.Sitting, new CatSittingState(this, gameConstants, stateMachine));
 
             stateMachine.ChangeState(CatState.Locomotion);
         }
@@ -112,37 +97,37 @@ namespace CatNamespace
         public void SetAnimatorSpeed(float speed)
         {
             currentSpeed = speed;
-            animator.SetFloat(AnimationParam_Speed, speed);
+            animator.SetFloat(gameConstants.AnimationParam_Speed, speed);
         }
 
         public void PlayInteractAnimation()
         {
             this.Log("PlayInteractAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(AnimationParam_Interact);
+            animator.SetTrigger(gameConstants.AnimationParam_Interact);
         }
 
         public void PlayEatAnimation()
         {
             this.Log("PlayEatAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(AnimationParam_Eat);
+            animator.SetTrigger(gameConstants.AnimationParam_Eat);
         }
 
         public void PlaySitAnimation()
         {
             this.Log("PlaySitAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(AnimationParam_Sit, true);
+            animator.SetBool(gameConstants.AnimationParam_Sit, true);
         }
 
         public void PlayStandUpAnimation()
         {
             this.Log("PlayStandUpAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(AnimationParam_Sit, false);
+            animator.SetBool(gameConstants.AnimationParam_Sit, false);
         }
 
         public void PlayRunJumpAnimation()
         {
             this.Log("PlayRunJumpAnimation", LogStyles.AnimationPositive);
-            animator.SetTrigger(AnimationParam_RunJump);
+            animator.SetTrigger(gameConstants.AnimationParam_RunJump);
         }
 
 #endregion AnimationMethods

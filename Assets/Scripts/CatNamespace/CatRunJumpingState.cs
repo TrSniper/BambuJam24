@@ -1,11 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using InspectorLogger;
+using ScriptableObjects;
 
 namespace CatNamespace
 {
     public class CatRunJumpingState : CatBaseState
     {
-        public CatRunJumpingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
+        public CatRunJumpingState(Cat cat, GameConstants gameConstants, CatStateMachine stateMachine) : base(cat, gameConstants, stateMachine) { }
 
         private bool isJumping;
 
@@ -16,7 +17,7 @@ namespace CatNamespace
             cat.PlayRunJumpAnimation();
 
             isJumping = true;
-            await UniTask.WaitForSeconds(Cat.RunJumpAnimationDuration);
+            await UniTask.WaitForSeconds(gameConstants.RunJumpAnimationDuration);
             isJumping = false;
 
             stateMachine.ChangeState(CatState.Locomotion);

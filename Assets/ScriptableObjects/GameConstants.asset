@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5488f4835d65432bb74fb1f94db590c5, type: 3}
+  m_Name: GameConstants
+  m_EditorClassIdentifier: 
+  AnimationParam_Speed: -823668238
+  AnimationParam_Interact: -662453572
+  AnimationParam_Eat: -1566672390
+  AnimationParam_Sit: 1928080432
+  AnimationParam_RunJump: 1913521290
+  RunJumpAnimationDuration: 2.6
+  InteractAnimationDuration: 1.45
+  EatAnimationDuration: 5
+  StandUpAnimationDuration: 1.4
+  MaxMoveSpeedToEat: 0.1
+  MaxMoveSpeedToInteract: 0.1
+  MaxMoveSpeedToIdleJump: 0.1
+  MaxMoveSpeedToSit: 0.1
+  MinMoveSpeedToRunJump: 0.9

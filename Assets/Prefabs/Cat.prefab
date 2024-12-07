@@ -49,18 +49,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b151ea6e5d2467080dfc7932a984445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 9600a6a6fc0829b4193d093367bb8906, type: 2}
   animator: {fileID: 4650312521485465908}
   rigidbody: {fileID: 5313723701562574671}
+  currentState: 0
+  currentSpeed: 0
   lookInput: {x: 0, y: 0}
   moveInput: {x: 0, y: 0}
   isInteractKeyDown: 0
   isSitKeyDown: 0
   isJumpKeyDown: 0
+  isEatKeyDown: 0
   isRunKey: 0
-  currentInteract: 0
-  currentEat: 0
-  currentSit: 0
-  currentRunJump: 0
 --- !u!114 &875246535030837390
 MonoBehaviour:
   m_ObjectHideFlags: 0

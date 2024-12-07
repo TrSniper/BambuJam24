@@ -1,11 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
 using InspectorLogger;
+using ScriptableObjects;
 
 namespace CatNamespace
 {
     public class CatSittingState : CatBaseState
     {
-        public CatSittingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
+        public CatSittingState(Cat cat, GameConstants gameConstants, CatStateMachine stateMachine) : base(cat, gameConstants, stateMachine) { }
 
         public override void Enter()
         {
@@ -21,7 +22,7 @@ namespace CatNamespace
             if (cat.IsSitKeyDown())
             {
                 cat.PlayStandUpAnimation();
-                await UniTask.WaitForSeconds(Cat.StandUpAnimationDuration);
+                await UniTask.WaitForSeconds(gameConstants.StandUpAnimationDuration);
                 stateMachine.ChangeState(CatState.Locomotion);
             }
         }
