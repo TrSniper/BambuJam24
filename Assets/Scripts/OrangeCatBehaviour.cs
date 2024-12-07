@@ -1,5 +1,4 @@
-﻿using System;
-using InspectorLogger;
+﻿using InspectorLogger;
 using UnityEngine;
 
 public class OrangeCatBehaviour : MonoBehaviour
@@ -10,9 +9,9 @@ public class OrangeCatBehaviour : MonoBehaviour
     public static int AnimationParam_Sit = Animator.StringToHash("Sit");
     public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
 
-    public static float InteractAnimationDuration = 0.5f;
-    public static float EatAnimationDuration = 0.5f;
-    public static float StandUpAnimationDuration = 0.5f;
+    public static float InteractAnimationDuration = 0.825f;
+    public static float EatAnimationDuration = 0.95f;
+    public static float StandUpAnimationDuration = 0.825f;
 
     [Header("References")]
     [SerializeField] private Animator animator;
