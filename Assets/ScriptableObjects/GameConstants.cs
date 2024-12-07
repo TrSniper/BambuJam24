@@ -13,6 +13,11 @@ namespace ScriptableObjects
         public float maxWalkSpeed;
         public float catRealSpeedMultiplier;
 
+        [Header("Camera Parameters")]
+        public float cameraSensitivity;
+        public bool isXInverted;
+        public bool isYInverted;
+
         [Header("Animation Durations")]
         public float runJumpAnimationDuration;
         public float interactAnimationDuration;

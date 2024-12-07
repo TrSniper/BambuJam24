@@ -123,7 +123,7 @@ namespace CatNamespace
 
 #region AnimationMethods
 
-        public void SetAnimatorSpeed(float speed)
+        private void SetAnimatorSpeed(float speed)
         {
             currentSpeed = speed;
             animator.SetFloat(gameConstants.animationParamSpeed, speed);
