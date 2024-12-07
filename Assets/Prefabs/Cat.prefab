@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7975403140858437025}
   - component: {fileID: 6042677520374958276}
+  - component: {fileID: 875246535030837390}
   - component: {fileID: 4650312521485465908}
   - component: {fileID: 5313723701562574671}
   - component: {fileID: 185111304941267117}
@@ -50,6 +51,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4650312521485465908}
   rigidbody: {fileID: 5313723701562574671}
+  lookInput: {x: 0, y: 0}
+  moveInput: {x: 0, y: 0}
+  isInteractKeyDown: 0
+  isSitKeyDown: 0
+  isJumpKeyDown: 0
+  isRunKey: 0
+  currentInteract: 0
+  currentEat: 0
+  currentSit: 0
+  currentRunJump: 0
+--- !u!114 &875246535030837390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5013987043722592974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfd65262baa485f9924dc86de2d4282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logs: []
 --- !u!95 &4650312521485465908
 Animator:
   serializedVersion: 7

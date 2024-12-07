@@ -1,4 +1,5 @@
 ﻿using System;
+using InspectorLogger;
 using UnityEngine;
 
 public class OrangeCatBehaviour : MonoBehaviour
@@ -8,6 +9,10 @@ public class OrangeCatBehaviour : MonoBehaviour
     public static int AnimationParam_Eat = Animator.StringToHash("Eat");
     public static int AnimationParam_Sit = Animator.StringToHash("Sit");
     public static int AnimationParam_RunJump = Animator.StringToHash("RunJump");
+
+    public static float InteractAnimationDuration = 0.5f;
+    public static float EatAnimationDuration = 0.5f;
+    public static float StandUpAnimationDuration = 0.5f;
 
     [Header("References")]
     [SerializeField] private Animator animator;
@@ -57,33 +62,42 @@ public class OrangeCatBehaviour : MonoBehaviour
 
 #region AnimationMethods
 
-    private void SetSpeed(float speed)
+    private void SetAnimatorSpeed(float speed)
     {
         animator.SetFloat(AnimationParam_Speed, speed);
     }
 
-    private void SetInteract(bool attack)
+    private void PlayInteractAnimation()
     {
-        currentInteract = attack;
-        animator.SetBool(AnimationParam_Interact, attack);
+        this.Log("PlayInteractAnimation", LogStyles.AnimationPositive);
+        animator.SetBool(AnimationParam_Interact, true);
+        animator.SetBool(AnimationParam_Interact, false);
     }
 
-    private void SetEat(bool eat)
+    private void PlayEatAnimation()
     {
-        currentEat = eat;
-        animator.SetBool(AnimationParam_Eat, eat);
+        this.Log("PlayEatAnimation", LogStyles.AnimationPositive);
+        animator.SetBool(AnimationParam_Eat, true);
+        animator.SetBool(AnimationParam_Eat, false);
     }
 
-    private void SetSit(bool sit)
+    private void PlaySitAnimation()
     {
-        currentSit = sit;
-        animator.SetBool(AnimationParam_Sit, sit);
+        this.Log("PlaySitAnimation", LogStyles.AnimationPositive);
+        animator.SetBool(AnimationParam_Sit, true);
     }
 
-    private void SetRunJump(bool runJump)
+    private void PlayStandUpAnimation()
     {
-        currentRunJump = runJump;
-        animator.SetBool(AnimationParam_RunJump, runJump);
+        this.Log("PlayStandUpAnimation", LogStyles.AnimationPositive);
+        animator.SetBool(AnimationParam_Sit, false);
+    }
+
+    private void PlayRunJumpAnimation()
+    {
+        this.Log("PlayRunJumpAnimation", LogStyles.AnimationPositive);
+        animator.SetBool(AnimationParam_RunJump, true);
+        animator.SetBool(AnimationParam_RunJump, false);
     }
 
 #endregion AnimationMethods
