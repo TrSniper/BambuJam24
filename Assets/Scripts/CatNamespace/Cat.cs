@@ -21,6 +21,7 @@ namespace CatNamespace
         [SerializeField] private GameConstants gameConstants;
         [SerializeField] private Animator animator;
         [SerializeField] private Rigidbody rigidbody;
+        [SerializeField] private Transform camera;
 
         [Header("State Info")]
         [SerializeField] private CatState currentState;
@@ -117,8 +118,13 @@ namespace CatNamespace
         private void MoveCat()
         {
             var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
+            moveDirection.y = 0f;
+
             var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
             rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
+
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * 10f);
         }
 
 #region AnimationMethods

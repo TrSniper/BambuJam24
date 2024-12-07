@@ -117,18 +117,18 @@ MonoBehaviour:
   Radius: 2
   Orbits:
     Top:
-      Radius: 2
-      Height: 1
+      Radius: 1.5
+      Height: 1.5
     Center:
-      Radius: 2
-      Height: 0.5
+      Radius: 1.5
+      Height: 1
     Bottom:
-      Radius: 1
+      Radius: 1.5
       Height: 0
     SplineCurvature: 0
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 0
+    Value: 128.47464
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 17.5
+    Value: 26.09944
     Center: 17.5
     Range: {x: -10, y: 45}
     Wrap: 0
