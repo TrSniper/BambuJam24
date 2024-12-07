@@ -22,6 +22,12 @@ public class OrangeCatBehaviour : MonoBehaviour
     [SerializeField] private bool isJumpKeyDown;
     [SerializeField] private bool isRunKey;
 
+    [Header("Animation Info")]
+    [SerializeField] private bool currentAttack;
+    [SerializeField] private bool currentEat;
+    [SerializeField] private bool currentSit;
+    [SerializeField] private bool currentRunJump;
+
     private CatInput catInput;
 
     private void Start()
@@ -60,21 +66,25 @@ public class OrangeCatBehaviour : MonoBehaviour
 
     private void SetAttack(bool attack)
     {
+        currentAttack = attack;
         animator.SetBool(AnimationParam_Attack, attack);
     }
 
     private void SetEat(bool eat)
     {
+        currentEat = eat;
         animator.SetBool(AnimationParam_Eat, eat);
     }
 
     private void SetSit(bool sit)
     {
+        currentSit = sit;
         animator.SetBool(AnimationParam_Sit, sit);
     }
 
     private void SetRunJump(bool runJump)
     {
+        currentRunJump = runJump;
         animator.SetBool(AnimationParam_RunJump, runJump);
     }
 
