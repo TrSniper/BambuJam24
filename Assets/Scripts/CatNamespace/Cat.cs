@@ -134,6 +134,37 @@ namespace CatNamespace
                 //Rotate cat
                 transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
             }
+
+            AlignWithSlope();
+        }
+
+        private void AlignWithSlope()
+        {
+            var rayOrigin = transform.position + Vector3.up * 0.5f;
+
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 5f, gameConstants.groundLayer))
+            {
+                var groundNormal = hit.normal;
+                var projectedNormal = Vector3.ProjectOnPlane(groundNormal, transform.right);
+
+                if (projectedNormal.sqrMagnitude > 0.0001f)
+                {
+                    var angle = Vector3.SignedAngle(transform.up, projectedNormal, transform.right);
+                    var pitchRotation = Quaternion.AngleAxis(angle, transform.right);
+                    var targetRotation = pitchRotation * transform.rotation;
+                    transform.rotation = targetRotation;
+                }
+
+                else
+                {
+                    Debug.LogError("Ground hit but normal is too small");
+                }
+            }
+
+            else
+            {
+                Debug.LogError("No ground hit");
+            }
         }
 
 #region AnimationMethods

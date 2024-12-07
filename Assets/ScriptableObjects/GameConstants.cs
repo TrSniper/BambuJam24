@@ -5,6 +5,9 @@ namespace ScriptableObjects
     [CreateAssetMenu(fileName = "GameConstants", menuName = "GameConstants", order = 0)]
     public class GameConstants : ScriptableObject
     {
+        [Header("General Parameters")]
+        public LayerMask groundLayer;
+
         [Header("Movement Parameters")]
         public float acceleration;
         public float runningAcceleration;

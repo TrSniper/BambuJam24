@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5488f4835d65432bb74fb1f94db590c5, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   acceleration: 1
   runningAcceleration: 1.6
   deceleration: 1
