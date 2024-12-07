@@ -12,6 +12,8 @@ namespace ScriptableObjects
         public float maxRunSpeed;
         public float maxWalkSpeed;
         public float catRealSpeedMultiplier;
+        public float catRotationSpeed;
+        public float horizontalInputSmoothSpeed;
 
         [Header("Camera Parameters")]
         public float cameraSensitivity;
@@ -37,5 +39,6 @@ namespace ScriptableObjects
         public int animationParamEat = Animator.StringToHash("Eat");
         public int animationParamSit = Animator.StringToHash("Sit");
         public int animationParamRunJump = Animator.StringToHash("RunJump");
+        public int animationParamHorizontalInput = Animator.StringToHash("HorizontalInput");
     }
 }

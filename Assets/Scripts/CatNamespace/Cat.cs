@@ -76,13 +76,13 @@ namespace CatNamespace
         private void Update()
         {
             GetInput();
-            UpdateSpeed();
+            UpdateSpeeds();
             stateMachine.Update();
         }
 
         private void FixedUpdate()
         {
-            MoveCat();
+            MoveAndRotateCat();
         }
 
         private void GetInput()
@@ -96,7 +96,7 @@ namespace CatNamespace
             isRunKey = catInput.Cat.Run.IsPressed();
         }
 
-        private void UpdateSpeed()
+        private void UpdateSpeeds()
         {
             var targetSpeed = moveInput.magnitude * (isRunKey ? gameConstants.maxRunSpeed : gameConstants.maxWalkSpeed);
 
@@ -113,9 +113,10 @@ namespace CatNamespace
             }
 
             SetAnimatorSpeed(currentSpeed);
+            SetAnimatorHorizontalInput(moveInput.x);
         }
 
-        private void MoveCat()
+        private void MoveAndRotateCat()
         {
             var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
             moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
@@ -124,7 +125,8 @@ namespace CatNamespace
             var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
             rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
 
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * 10f);
+            //Rotate cat
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed);
         }
 
 #region AnimationMethods
@@ -134,6 +136,20 @@ namespace CatNamespace
             currentSpeed = speed;
             animator.SetFloat(gameConstants.animationParamSpeed, speed);
         }
+
+        private void SetAnimatorHorizontalInput(float targetHorizontalInput)
+        {
+            var currentHorizontalInput = animator.GetFloat(gameConstants.animationParamHorizontalInput);
+
+            var smoothedHorizontalInput = Mathf.MoveTowards(
+                currentHorizontalInput,
+                targetHorizontalInput,
+                gameConstants.horizontalInputSmoothSpeed * Time.deltaTime
+            );
+
+            animator.SetFloat(gameConstants.animationParamHorizontalInput, smoothedHorizontalInput);
+        }
+
 
         public void PlayInteractAnimation()
         {

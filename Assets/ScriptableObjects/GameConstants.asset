@@ -18,6 +18,8 @@ MonoBehaviour:
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
   catRealSpeedMultiplier: 1
+  catRotationSpeed: 0
+  horizontalInputSmoothSpeed: 4
   cameraSensitivity: 4
   isXInverted: 0
   isYInverted: 0
@@ -35,3 +37,4 @@ MonoBehaviour:
   animationParamEat: -1566672390
   animationParamSit: 1928080432
   animationParamRunJump: 1913521290
+  animationParamHorizontalInput: 1784537852
