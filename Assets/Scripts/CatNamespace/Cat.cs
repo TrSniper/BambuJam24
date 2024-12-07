@@ -98,15 +98,13 @@ namespace CatNamespace
         public void PlayInteractAnimation()
         {
             this.Log("PlayInteractAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(AnimationParam_Interact, true);
-            animator.SetBool(AnimationParam_Interact, false);
+            animator.SetTrigger(AnimationParam_Interact);
         }
 
         public void PlayEatAnimation()
         {
             this.Log("PlayEatAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(AnimationParam_Eat, true);
-            animator.SetBool(AnimationParam_Eat, false);
+            animator.SetTrigger(AnimationParam_Eat);
         }
 
         public void PlaySitAnimation()
@@ -124,8 +122,7 @@ namespace CatNamespace
         public void PlayRunJumpAnimation()
         {
             this.Log("PlayRunJumpAnimation", LogStyles.AnimationPositive);
-            animator.SetBool(AnimationParam_RunJump, true);
-            animator.SetBool(AnimationParam_RunJump, false);
+            animator.SetTrigger(AnimationParam_RunJump);
         }
 
 #endregion AnimationMethods

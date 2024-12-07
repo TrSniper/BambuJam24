@@ -7,24 +7,30 @@ namespace CatNamespace
     {
         public CatJumpingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
 
-        public override void Enter()
+        private bool isJumping;
+
+        public override async void Enter()
         {
             base.Enter();
             cat.Log("Entering Jumping State", LogStyles.StatePositive);
             cat.PlayRunJumpAnimation();
+
+            isJumping = true;
+            await UniTask.WaitForSeconds(Cat.JumpAnimationDuration);
+            isJumping = false;
+
+            stateMachine.ChangeState(CatState.Locomotion);
         }
 
-        public override async void Update()
+        public override void Update()
         {
             base.Update();
-            await UniTask.WaitForSeconds(Cat.JumpAnimationDuration);
-            stateMachine.ChangeState(CatState.Locomotion);
         }
 
         public override bool Exit()
         {
             base.Exit();
-            return false;
+            return !isJumping;
         }
     }
 }

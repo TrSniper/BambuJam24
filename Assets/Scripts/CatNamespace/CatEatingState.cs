@@ -7,24 +7,30 @@ namespace CatNamespace
     {
         public CatEatingState(Cat cat, CatStateMachine stateMachine) : base(cat, stateMachine) { }
 
-        public override void Enter()
+        private bool isEating;
+
+        public override async void Enter()
         {
             base.Enter();
             cat.Log("Entering Eating State", LogStyles.StatePositive);
             cat.PlayEatAnimation();
+
+            isEating = true;
+            await UniTask.WaitForSeconds(Cat.EatAnimationDuration);
+            isEating = false;
+
+            stateMachine.ChangeState(CatState.Locomotion);
         }
 
-        public override async void Update()
+        public override void Update()
         {
             base.Update();
-            await UniTask.WaitForSeconds(Cat.EatAnimationDuration);
-            stateMachine.ChangeState(CatState.Locomotion);
         }
 
         public override bool Exit()
         {
             base.Exit();
-            return false;
+            return !isEating;
         }
     }
 }

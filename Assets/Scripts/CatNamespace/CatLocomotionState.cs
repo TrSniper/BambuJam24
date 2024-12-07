@@ -19,20 +19,9 @@ namespace CatNamespace
 
             cat.SetAnimatorSpeed(moveInput.magnitude);
 
-            if (cat.IsJumpKeyDown())
-            {
-                stateMachine.ChangeState(CatState.Jumping);
-            }
-
-            else if (cat.IsInteractKeyDown())
-            {
-                stateMachine.ChangeState(CatState.Interacting);
-            }
-
-            else if (cat.IsSitKeyDown())
-            {
-                stateMachine.ChangeState(CatState.Sitting);
-            }
+            if (cat.IsJumpKeyDown()) stateMachine.ChangeState(CatState.Jumping);
+            else if (cat.IsInteractKeyDown()) stateMachine.ChangeState(CatState.Interacting);
+            else if (cat.IsSitKeyDown()) stateMachine.ChangeState(CatState.Sitting);
         }
 
         public override bool Exit()
