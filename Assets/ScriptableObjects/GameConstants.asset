@@ -17,6 +17,7 @@ MonoBehaviour:
   deceleration: 1
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
+  catRealSpeedMultiplier: 1
   runJumpAnimationDuration: 2.6
   interactAnimationDuration: 1.45
   eatAnimationDuration: 5

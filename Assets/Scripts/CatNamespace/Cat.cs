@@ -1,4 +1,5 @@
-﻿using InspectorLogger;
+﻿using System;
+using InspectorLogger;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -78,6 +79,11 @@ namespace CatNamespace
             stateMachine.Update();
         }
 
+        private void FixedUpdate()
+        {
+            MoveCat();
+        }
+
         private void GetInput()
         {
             lookInput = catInput.Cat.Look.ReadValue<Vector2>();
@@ -106,6 +112,13 @@ namespace CatNamespace
             }
 
             SetAnimatorSpeed(currentSpeed);
+        }
+
+        private void MoveCat()
+        {
+            var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
+            rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
         }
 
 #region AnimationMethods

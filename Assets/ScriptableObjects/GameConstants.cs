@@ -11,6 +11,7 @@ namespace ScriptableObjects
         public float deceleration;
         public float maxRunSpeed;
         public float maxWalkSpeed;
+        public float catRealSpeedMultiplier;
 
         [Header("Animation Durations")]
         public float runJumpAnimationDuration;
