@@ -14,6 +14,7 @@ namespace ScriptableObjects
         public float catRealSpeedMultiplier;
         public float catRotationSpeed;
         public float horizontalInputSmoothSpeed;
+        public float maxAllowedAngleForMovement;
 
         [Header("Camera Parameters")]
         public float cameraSensitivity;

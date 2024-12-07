@@ -113,7 +113,7 @@ namespace CatNamespace
             }
 
             SetAnimatorSpeed(currentSpeed);
-            SetAnimatorHorizontalInput(moveInput.x);
+            SetAnimatorHorizontalInput();
         }
 
         private void MoveAndRotateCat()
@@ -122,11 +122,23 @@ namespace CatNamespace
             moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
             moveDirection.y = 0f;
 
-            var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
-            rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
+            //Do not move if do not look at the moveDirection
+            var angleDifference = Vector3.Angle(transform.forward, moveDirection);
 
-            //Rotate cat
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+            if (angleDifference > gameConstants.maxAllowedAngleForMovement)
+            {
+                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+                rigidbody.linearVelocity = new Vector3(0, rigidbody.linearVelocity.y, 0);
+            }
+
+            else
+            {
+                var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
+                rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
+
+                //Rotate cat
+                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
+            }
         }
 
 #region AnimationMethods
@@ -137,8 +149,14 @@ namespace CatNamespace
             animator.SetFloat(gameConstants.animationParamSpeed, speed);
         }
 
-        private void SetAnimatorHorizontalInput(float targetHorizontalInput)
+        private void SetAnimatorHorizontalInput()
         {
+            var moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            moveDirection = camera.right * moveDirection.x + camera.forward * moveDirection.z;
+            moveDirection.y = 0f;
+
+            var angleDifference = Vector3.SignedAngle(transform.forward, moveDirection, Vector3.up);
+            var targetHorizontalInput = Mathf.Clamp(angleDifference / 90f, -1f, 1f);
             var currentHorizontalInput = animator.GetFloat(gameConstants.animationParamHorizontalInput);
 
             var smoothedHorizontalInput = Mathf.MoveTowards(
@@ -149,7 +167,6 @@ namespace CatNamespace
 
             animator.SetFloat(gameConstants.animationParamHorizontalInput, smoothedHorizontalInput);
         }
-
 
         public void PlayInteractAnimation()
         {

@@ -20,6 +20,7 @@ MonoBehaviour:
   catRealSpeedMultiplier: 1
   catRotationSpeed: 1
   horizontalInputSmoothSpeed: 4
+  maxAllowedAngleForMovement: 90
   cameraSensitivity: 4
   isXInverted: 0
   isYInverted: 0
