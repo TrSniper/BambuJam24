@@ -88,12 +88,28 @@ namespace CatNamespace
 
         private void GetInput()
         {
+            if (GameManager.Instance.IsOnFailScreen())
+            {
+                ResetInput();
+                return;
+            }
+
             lookInput = catInput.Cat.Look.ReadValue<Vector2>();
             moveInput = catInput.Cat.Move.ReadValue<Vector2>();
             isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
             isEatKeyDown = catInput.Cat.Eat.WasPressedThisFrame();
             isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
             isRunKey = catInput.Cat.Run.IsPressed();
+        }
+
+        private void ResetInput()
+        {
+            lookInput = Vector2.zero;
+            moveInput = Vector2.zero;
+            isInteractKeyDown = false;
+            isEatKeyDown = false;
+            isJumpKeyDown = false;
+            isRunKey = false;
         }
 
         private void UpdateSpeeds()

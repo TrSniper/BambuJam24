@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 4896890087738363138}
   - component: {fileID: 4145559084384593508}
   m_Layer: 0
-  m_Name: GameOverManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,6 +428,7 @@ MonoBehaviour:
   textFadeInDuration: 1
   textDuration: 1
   textFadeOutDuration: 1
+  isOnFailScreen: 0
 --- !u!1 &9082324343653314095
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4404247573441165876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -486,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
