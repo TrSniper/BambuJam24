@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class StartSequence : MonoBehaviour
 {
     [SerializeField]
@@ -20,57 +21,92 @@ public class StartSequence : MonoBehaviour
 
     private async void Start()
     {
-        sounds = new Dictionary<string, AudioClip>();
-        sounds.Clear();
-        sounds.Add("miyav1", startSounds[0]);
-        sounds.Add("miyav2", startSounds[1]);
-        sounds.Add("hithafif", startSounds[2]);
-        sounds.Add("takedamage", startSounds[3]);
-        sounds.Add("hitstrong", startSounds[4]);
-        sounds.Add("hitcinematic", startSounds[5]);
-        sounds.Add("door", startSounds[6]);
+        // Initialize sounds dictionary
+        sounds = new Dictionary<string, AudioClip>
+        {
+            { "miyav1", startSounds[0] },
+            { "miyav2", startSounds[1] },
+            { "hithafif", startSounds[2] },
+            { "takedamage", startSounds[3] },
+            { "hitstrong", startSounds[4] },
+            { "hitcinematic", startSounds[5] },
+            { "door", startSounds[6] }
+        };
 
-        blackImage.color += new Color(0,0,0,1);
+        // Set black image to fully opaque
+        blackImage.color = new Color(0, 0, 0, 1);
 
+        // Start the sequence
         await StartingSequence();
-        TextAndBlackSequence();
     }
 
     async UniTask StartingSequence()
     {
-        startSources[0].clip = sounds["hithafif"];
-        startSources[0].Play();
-        startSources[1].clip = sounds["takedamage"];
-        startSources[1].Play();
-        await UniTask.WaitForSeconds(startSources[1].clip.length);
-        startSources[0].Stop();
-        startSources[0].clip = sounds["miyav1"];
-        await UniTask.WaitForSeconds(2.4f);
-        startSources[0].Play();
-        startSources[1].clip = sounds["hitstrong"];
-        startSources[1].Play();
-        await UniTask.WaitForSeconds(3.1f);
-        startSources[0].Stop();
-        startSources[0].clip = sounds["miyav2"];
-        startSources[0].time = 1.5f;
-        startSources[0].Play();
-        startSources[1].Stop();
+        // Play "hithafif" on source 0
+        await PlayAudio(startSources[0], sounds["hithafif"]);
+
+        // Play "takedamage" on source 1
+        await PlayAudio(startSources[1], sounds["takedamage"]);
+
+        // Wait 2.4 seconds before the next audio
+        await UniTask.Delay(2400);
+        await PlayAudio(startSources[0], sounds["miyav1"]);
+
+        // Play "hitstrong" on source 1
+        await PlayAudio(startSources[1], sounds["hitstrong"]);
+
+        // Play "miyav2" starting at 1.5 seconds and "door" on source 1 simultaneously
+        PlayAudioFromTime(startSources[0], sounds["miyav2"], 1.5f);
         startSources[1].clip = sounds["door"];
         startSources[1].Play();
-        await UniTask.WaitForSeconds(6f);
-        startSources[0].Stop();
-        startSources[1].Stop();
-        startSources[2].clip = sounds["hitcinematic"];
-        startSources[2].Play();
-        await UniTask.WaitForSeconds(sounds["hitcinematic"].length);
-        startSources[2].Stop();
-    }
-    void TextAndBlackSequence()
-    {
+
+        // Wait 6 seconds for these audios to finish
+        await UniTask.Delay(6000);
+
         startText.gameObject.SetActive(true);
+        startText.DOFade(1, 2.5f);
+
+        // Stop all sources and play the final audio
+        StopAllSources();
+        await PlayAudio(startSources[2], sounds["hitcinematic"]);
+        TextAndBlackSequence();
+    }
+
+     void TextAndBlackSequence()
+    {
         startText.DOFade(0, 2.5f);
         blackImage.DOFade(0, 2.5f);
     }
 
+    async UniTask PlayAudio(AudioSource source, AudioClip clip)
+    {
+        // Play the audio clip on the given source
+        if (source == null || clip == null) return;
 
+        source.clip = clip;
+        source.Play();
+
+        // Wait for the duration of the clip
+        await UniTask.Delay((int)(clip.length * 1000));
+    }
+
+    void PlayAudioFromTime(AudioSource source, AudioClip clip, float startTime)
+    {
+        // Play audio from a specific time
+        if (source == null || clip == null) return;
+
+        source.clip = clip;
+        source.time = startTime;
+        source.Play();
+    }
+
+    void StopAllSources()
+    {
+        // Stop all active audio sources
+        foreach (var source in startSources)
+        {
+            if (source.isPlaying)
+                source.Stop();
+        }
+    }
 }
