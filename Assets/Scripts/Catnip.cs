@@ -9,7 +9,13 @@ public class Catnip : MonoBehaviour
     [SerializeField] ParticleSystem effect;
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.CompareTag("Cat")) return;
         OnCatnipIngested?.Invoke();
+        StartCoroutine(nameof(EndThis));
+    }
+
+    private void Start()
+    {
         StartCoroutine(nameof(EndThis));
     }
 
