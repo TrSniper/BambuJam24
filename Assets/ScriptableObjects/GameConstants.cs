@@ -35,7 +35,6 @@ namespace ScriptableObjects
         public float maxMoveSpeedToEat;
         public float maxMoveSpeedToInteract;
         public float maxMoveSpeedToIdleJump;
-        public float maxMoveSpeedToSit;
         public float minMoveSpeedToRunJump;
         public float minMoveSpeedToFastRotate;
 

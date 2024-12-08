@@ -29,13 +29,12 @@ MonoBehaviour:
   isXInverted: 0
   isYInverted: 1
   idleJumpAnimationDuration: 0
-  runJumpAnimationDuration: 2.6
-  interactAnimationDuration: 1.45
-  eatAnimationDuration: 5
+  runJumpAnimationDuration: 1.3
+  interactAnimationDuration: 0.725
+  eatAnimationDuration: 2.5
   maxMoveSpeedToEat: 0.1
   maxMoveSpeedToInteract: 0.1
   maxMoveSpeedToIdleJump: 0.1
-  maxMoveSpeedToSit: 0.1
   minMoveSpeedToRunJump: 0.9
   minMoveSpeedToFastRotate: 0.7
   animationParamSpeed: -823668238

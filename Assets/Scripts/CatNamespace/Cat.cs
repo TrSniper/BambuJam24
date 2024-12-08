@@ -45,7 +45,6 @@ namespace CatNamespace
 
         public bool CanEat() => currentSpeed <= gameConstants.maxMoveSpeedToEat;
         public bool CanInteract() => currentSpeed <= gameConstants.maxMoveSpeedToInteract;
-        public bool CanSit() => currentSpeed <= gameConstants.maxMoveSpeedToSit;
         public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump;
         public bool CanRunJump() => currentSpeed >= gameConstants.minMoveSpeedToRunJump;
 
@@ -71,8 +70,12 @@ namespace CatNamespace
 
         private void Update()
         {
-            GetInput();
-            UpdateSpeeds();
+            if (currentState is not CatState.RunJumping and not CatState.IdleJumping)
+            {
+                GetInput();
+                UpdateSpeeds();
+            }
+
             stateMachine.Update();
         }
 
