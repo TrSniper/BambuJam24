@@ -8,6 +8,8 @@ public class FailCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Cat")) GameManager.Instance.Fail(isDog, checkPoint).Forget();
+        if (!other.CompareTag("Cat")) return;
+
+        GameManager.Instance.Fail(isDog, checkPoint).Forget();
     }
 }
