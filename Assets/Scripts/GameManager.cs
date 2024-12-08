@@ -9,17 +9,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Texts")]
+    [Header("Pause Menu References")]
+    [SerializeField] private GameObject pauseMenu;
+
+    [Header("Fail Texts")]
     [SerializeField] private string[] dogTexts;
     [SerializeField] private string[] waterTexts;
     [SerializeField] private string restartText;
 
-    [Header("References")]
+    [Header("Fail References")]
     [SerializeField] private Image blackScreen;
     [SerializeField] private TextMeshProUGUI dogText;
     [SerializeField] private TextMeshProUGUI waterText;
 
-    [Header("Parameters")]
+    [Header("Fail Parameters")]
     [SerializeField] private float blackScreenFadeInDuration;
     [SerializeField] private float textFadeInDuration;
     [SerializeField] private float textDuration;
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
     private int dogTextIndex;
     private int waterTextIndex;
     private int catLives = 9;
+    private bool isPaused;
 
     public bool IsOnFailScreen() => isOnFailScreen;
 
@@ -45,6 +49,26 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused) ClosePauseMenu();
+        else if (Input.GetKeyDown(KeyCode.Escape)) OpenPauseMenu();
+    }
+
+    private void OpenPauseMenu()
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(true);
+        isPaused = true;
+    }
+
+    private void ClosePauseMenu()
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(false);
+        isPaused = false;
     }
 
     public async UniTask Fail(bool isDog, Transform checkPoint)
