@@ -30,7 +30,14 @@ namespace ScriptableObjects
         public float idleJumpAnimationPower;
         public float idleJumpAnimationUpRelocation;
         public float idleJumpAnimationForwardRelocation;
-        public float idleJumpAnimationForwardCheckTolerance;
+
+        [Header("Mouse Parameters")]
+        public float mouseDeathAnimationUpDistance;
+        public float mouseDeathAnimationUpDuration;
+        public float mouseDeathAnimationZRotationAmount;
+        public float mouseDeathAnimationZRotationDuration;
+        public float mouseEatenAnimationDelay;
+        public float mouseEatenAnimationDuration;
 
         [Header("Camera Parameters")]
         public float cameraSensitivity;
@@ -46,8 +53,6 @@ namespace ScriptableObjects
         [Header("Speed Constraints")]
         public float maxMoveSpeedToEat;
         public float maxMoveSpeedToInteract;
-        public float maxMoveSpeedToIdleJump;
-        public float minMoveSpeedToRunJump;
         public float minMoveSpeedToFastRotate;
 
         [Header("Animation Parameters")]

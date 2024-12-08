@@ -25,7 +25,6 @@ namespace CatNamespace
         [Header("State Info")]
         [SerializeField] private CatState currentState;
         [SerializeField] private float currentSpeed;
-        public bool allowedToIdleJump;
 
         [Header("Input Info")]
         [SerializeField] private Vector2 lookInput;
@@ -36,6 +35,7 @@ namespace CatNamespace
         [SerializeField] private bool isRunKey;
 
         public Rigidbody GetRigidbody() => rigidbody;
+        public CatState GetCurrentState() => currentState;
         public float GetCurrentSpeed() => currentSpeed;
         public Vector2 GetLookInput() => lookInput;
         public Vector2 GetMoveInput() => moveInput;
@@ -47,8 +47,6 @@ namespace CatNamespace
 
         public bool CanEat() => currentSpeed <= gameConstants.maxMoveSpeedToEat;
         public bool CanInteract() => currentSpeed <= gameConstants.maxMoveSpeedToInteract;
-        public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump && allowedToIdleJump;
-        public bool CanRunJump() => currentSpeed >= gameConstants.minMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
@@ -88,12 +86,28 @@ namespace CatNamespace
 
         private void GetInput()
         {
+            if (GameManager.Instance.IsOnFailScreen())
+            {
+                ResetInput();
+                return;
+            }
+
             lookInput = catInput.Cat.Look.ReadValue<Vector2>();
             moveInput = catInput.Cat.Move.ReadValue<Vector2>();
             isInteractKeyDown = catInput.Cat.Interact.WasPressedThisFrame();
             isEatKeyDown = catInput.Cat.Eat.WasPressedThisFrame();
             isJumpKeyDown = catInput.Cat.Jump.WasPressedThisFrame();
             isRunKey = catInput.Cat.Run.IsPressed();
+        }
+
+        private void ResetInput()
+        {
+            lookInput = Vector2.zero;
+            moveInput = Vector2.zero;
+            isInteractKeyDown = false;
+            isEatKeyDown = false;
+            isJumpKeyDown = false;
+            isRunKey = false;
         }
 
         private void UpdateSpeeds()
@@ -148,7 +162,7 @@ namespace CatNamespace
         {
             var rayOrigin = transform.position + Vector3.up * 0.5f;
 
-            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 5f, gameConstants.groundLayer))
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 1f, gameConstants.groundLayer))
             {
                 var groundNormal = hit.normal;
                 var projectedNormal = Vector3.ProjectOnPlane(groundNormal, transform.right);
@@ -163,13 +177,13 @@ namespace CatNamespace
 
                 else
                 {
-                    Debug.LogError("Ground hit but normal is too small");
+                    //Debug.LogError("Ground hit but normal is too small");
                 }
             }
 
             else
             {
-                Debug.LogError("No ground hit");
+                //Debug.LogError("No ground hit");
             }
         }
 

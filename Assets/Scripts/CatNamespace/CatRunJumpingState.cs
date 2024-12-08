@@ -30,13 +30,12 @@ namespace CatNamespace
         private async UniTaskVoid JumpExtra()
         {
             await UniTask.WaitForSeconds(gameConstants.runJumpAnimationForceDelay);
-            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationForwardForce * cat.transform.forward, ForceMode.Impulse);
-            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationUpForce * cat.transform.up, ForceMode.Impulse);
-        }
 
-        public override void Update()
-        {
-            base.Update();
+            var forward = cat.transform.forward;
+            forward.y = 0;
+
+            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationForwardForce * forward, ForceMode.Impulse);
+            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationUpForce * Vector3.up, ForceMode.Impulse);
         }
 
         public override bool Exit()

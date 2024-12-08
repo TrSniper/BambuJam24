@@ -33,6 +33,7 @@ public class Patroller : MonoBehaviour
     Rigidbody rb;
 
     bool startFlag; //for events
+    private Tween pathTween;
 
     private void Start()
     {
@@ -47,7 +48,12 @@ public class Patroller : MonoBehaviour
 
     void Pathing()
     {
-        rb.DOPath(waypoints, duration, pathType, pathMode, 10, gizmoColor).SetEase(ease).SetLookAt(lookAt).SetLoops(loopCount);
+        pathTween = rb.DOPath(waypoints, duration, pathType, pathMode, 10, gizmoColor).SetEase(ease).SetLookAt(lookAt).SetLoops(loopCount);
         return;
+    }
+
+    public void Kill()
+    {
+        pathTween.Kill();
     }
 }
