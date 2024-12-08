@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   acceleration: 1
   runningAcceleration: 1.6
-  deceleration: 1
+  deceleration: 2
   maxRunSpeed: 1
   maxWalkSpeed: 0.5
   catRealSpeedMultiplier: 12
@@ -25,9 +25,9 @@ MonoBehaviour:
   catRunningRotationSpeed: 8
   horizontalInputSmoothSpeed: 2
   maxAllowedAngleForMovement: 90
-  runJumpAnimationForceDelay: 0.2
-  runJumpAnimationForwardForce: 5
-  runJumpAnimationUpForce: 8
+  runJumpAnimationForceDelay: 0
+  runJumpAnimationForwardForce: 10
+  runJumpAnimationUpForce: 10
   idleJumpAnimationDelay: 0.8
   idleJumpAnimationPower: 1.3
   idleJumpAnimationUpRelocation: 3.1
@@ -37,13 +37,13 @@ MonoBehaviour:
   isXInverted: 0
   isYInverted: 1
   idleJumpAnimationDuration: 2
-  runJumpAnimationDuration: 1.3
+  runJumpAnimationDuration: 0.9
   interactAnimationDuration: 0.725
   eatAnimationDuration: 2.5
   maxMoveSpeedToEat: 0.1
   maxMoveSpeedToInteract: 0.1
   maxMoveSpeedToIdleJump: 0.1
-  minMoveSpeedToRunJump: 0.9
+  minMoveSpeedToRunJump: 0
   minMoveSpeedToFastRotate: 0.7
   animationParamSpeed: -823668238
   animationParamInteract: -662453572

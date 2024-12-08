@@ -164,7 +164,7 @@ namespace CatNamespace
         {
             var rayOrigin = transform.position + Vector3.up * 0.5f;
 
-            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 5f, gameConstants.groundLayer))
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 1f, gameConstants.groundLayer))
             {
                 var groundNormal = hit.normal;
                 var projectedNormal = Vector3.ProjectOnPlane(groundNormal, transform.right);
@@ -179,13 +179,13 @@ namespace CatNamespace
 
                 else
                 {
-                    Debug.LogError("Ground hit but normal is too small");
+                    //Debug.LogError("Ground hit but normal is too small");
                 }
             }
 
             else
             {
-                Debug.LogError("No ground hit");
+                //Debug.LogError("No ground hit");
             }
         }
 
