@@ -26,6 +26,7 @@ public class Mouse : MonoBehaviour
             patroller.Kill();
             patroller.enabled = false;
             PlayDeathAnimation().Forget();
+            SoundManager.Instance.PlayOneShotSound(SoundType.MouseDeath);
         }
     }
 
@@ -38,6 +39,7 @@ public class Mouse : MonoBehaviour
         {
             isEaten = true;
             PlayBeingEatenAnimation().Forget();
+            SoundManager.Instance.PlayOneShotSound(SoundType.MouseEaten);
         }
     }
 

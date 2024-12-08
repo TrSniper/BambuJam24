@@ -12,20 +12,19 @@ namespace CatNamespace
 
         public override async void Enter()
         {
+            if (isInteracting) return;
+
             base.Enter();
             cat.Log("Entering Interacting State", LogStyles.StatePositive);
             cat.PlayInteractAnimation();
+
+            SoundManager.Instance.PlayOneShotSound(SoundType.CatAttack);
 
             isInteracting = true;
             await UniTask.WaitForSeconds(gameConstants.interactAnimationDuration);
             isInteracting = false;
 
             stateMachine.ChangeState(CatState.Locomotion);
-        }
-
-        public override void Update()
-        {
-            base.Update();
         }
 
         public override bool Exit()

@@ -11,5 +11,6 @@ public class FailCollider : MonoBehaviour
         if (!other.CompareTag("Cat")) return;
 
         GameManager.Instance.Fail(isDog, checkPoint).Forget();
+        SoundManager.Instance.PlayOneShotSound(isDog ? SoundType.CatDeath : SoundType.Water);
     }
 }
