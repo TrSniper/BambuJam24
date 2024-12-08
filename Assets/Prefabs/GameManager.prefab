@@ -421,6 +421,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affa00b5953c4f08aa2734befa393bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dogTexts:
+  - You have been chased by the dogs.
+  - Stay away from the dogs.
+  - You may love dogs but clearly the cat doesn't.
+  - The dogs appreciate your efforts.
+  - Victim delivery service.
+  waterTexts:
+  - "Don\u2019t you know cats don\u2019t like water?"
+  - "Cats aren\u2019t waterproof."
+  - "It\u2019s a cat, not a submarine. "
+  - If the goal was to traumatize a cat, congrats.
+  - "It\u2019s not \u2018trial and error\u2019 when it\u2019s always error."
+  - "They say cats have nine lives. Good thing, because you\u2019re burning through
+    them fast."
+  restartText: You literaly finished all 9 lives of the cat.
   blackScreen: {fileID: 4819821016844919903}
   dogText: {fileID: 1029369241044451464}
   waterText: {fileID: 2065380484944988715}

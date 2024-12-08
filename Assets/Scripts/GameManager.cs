@@ -9,6 +9,11 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Texts")]
+    [SerializeField] private string[] dogTexts;
+    [SerializeField] private string[] waterTexts;
+    [SerializeField] private string restartText;
+
     [Header("References")]
     [SerializeField] private Image blackScreen;
     [SerializeField] private TextMeshProUGUI dogText;
@@ -22,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Info")]
     [SerializeField] private bool isOnFailScreen;
+
+    private int dogTextIndex;
+    private int waterTextIndex;
+    private int catLives = 9;
 
     public bool IsOnFailScreen() => isOnFailScreen;
 
@@ -42,6 +51,8 @@ public class GameManager : MonoBehaviour
     {
         if (isOnFailScreen) return;
 
+        catLives--;
+
         isOnFailScreen = true;
         var cat = FindFirstObjectByType<Cat>();
         cat.transform.position = checkPoint.position;
@@ -50,6 +61,18 @@ public class GameManager : MonoBehaviour
         blackScreen.gameObject.SetActive(true);
         dogText.gameObject.SetActive(isDog);
         waterText.gameObject.SetActive(!isDog);
+
+        dogText.text = dogTexts[dogTextIndex];
+        waterText.text = waterTexts[waterTextIndex];
+
+        if (catLives == 0)
+        {
+            dogText.text = restartText;
+            waterText.text = restartText;
+        }
+
+        dogTextIndex = (dogTextIndex + 1) % dogTexts.Length;
+        waterTextIndex = (waterTextIndex + 1) % waterTexts.Length;
 
         dogText.DOFade(1, textFadeInDuration);
         waterText.DOFade(1, textFadeInDuration);
@@ -71,5 +94,11 @@ public class GameManager : MonoBehaviour
         waterText.color = new Color(waterText.color.r, waterText.color.g, waterText.color.b, 0);
 
         isOnFailScreen = false;
+
+        if (catLives == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            catLives = 9;
+        }
     }
 }
