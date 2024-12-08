@@ -20,6 +20,11 @@ namespace ScriptableObjects
         public float horizontalInputSmoothSpeed;
         public float maxAllowedAngleForMovement;
 
+        [Header("Running Jump Parameters")]
+        public float runJumpAnimationForceDelay;
+        public float runJumpAnimationForwardForce;
+        public float runJumpAnimationUpForce;
+
         [Header("Camera Parameters")]
         public float cameraSensitivity;
         public bool isXInverted;
