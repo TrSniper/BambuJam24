@@ -25,6 +25,7 @@ namespace CatNamespace
         [Header("State Info")]
         [SerializeField] private CatState currentState;
         [SerializeField] private float currentSpeed;
+        public bool allowedToIdleJump;
 
         [Header("Input Info")]
         [SerializeField] private Vector2 lookInput;
@@ -34,6 +35,7 @@ namespace CatNamespace
         [SerializeField] private bool isEatKeyDown;
         [SerializeField] private bool isRunKey;
 
+        public Rigidbody GetRigidbody() => rigidbody;
         public float GetCurrentSpeed() => currentSpeed;
         public Vector2 GetLookInput() => lookInput;
         public Vector2 GetMoveInput() => moveInput;
@@ -45,8 +47,7 @@ namespace CatNamespace
 
         public bool CanEat() => currentSpeed <= gameConstants.maxMoveSpeedToEat;
         public bool CanInteract() => currentSpeed <= gameConstants.maxMoveSpeedToInteract;
-        public bool CanSit() => currentSpeed <= gameConstants.maxMoveSpeedToSit;
-        public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump;
+        public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump && allowedToIdleJump;
         public bool CanRunJump() => currentSpeed >= gameConstants.minMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
@@ -71,8 +72,12 @@ namespace CatNamespace
 
         private void Update()
         {
-            GetInput();
-            UpdateSpeeds();
+            if (currentState is not CatState.RunJumping and not CatState.IdleJumping)
+            {
+                GetInput();
+                UpdateSpeeds();
+            }
+
             stateMachine.Update();
         }
 
@@ -122,7 +127,6 @@ namespace CatNamespace
 
             if (angleDifference > gameConstants.maxAllowedAngleForMovement)
             {
-                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
                 rigidbody.linearVelocity = new Vector3(0, rigidbody.linearVelocity.y, 0);
             }
 
@@ -130,10 +134,12 @@ namespace CatNamespace
             {
                 var velocity = moveDirection * (currentSpeed * gameConstants.catRealSpeedMultiplier);
                 rigidbody.linearVelocity = new Vector3(velocity.x, rigidbody.linearVelocity.y, velocity.z);
-
-                //Rotate cat
-                transform.forward = Vector3.Slerp(transform.forward, moveDirection, gameConstants.catRotationSpeed * Time.fixedDeltaTime);
             }
+
+            var rotationSpeed = currentSpeed > gameConstants.minMoveSpeedToFastRotate ? gameConstants.catRunningRotationSpeed : gameConstants.catRotationSpeed;
+            var baseStep = rotationSpeed * Time.fixedDeltaTime;
+            var slerpT = baseStep / (1f + (angleDifference / 90f));
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, slerpT);
 
             AlignWithSlope();
         }

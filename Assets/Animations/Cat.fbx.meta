@@ -1,259 +1,727 @@
 fileFormatVersion: 2
 guid: bdbc33f3d24291545bf52b3b03a371ba
-timeCreated: 1488491039
-licenseType: Store
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: GoatRig
-    100002: GoatRig_Head_JawEndSHJnt
-    100004: GoatRig_Head_JawSHJnt
-    100006: GoatRig_Head_TopSHJnt
-    100008: GoatRig_l_Clavicle_01_01SHJnt
-    100010: GoatRig_l_Eye_01SHJnt
-    100012: GoatRig_l_FrontLeg_AnkleSHJnt
-    100014: GoatRig_l_FrontLeg_BallSHJnt
-    100016: GoatRig_l_FrontLeg_HipSHJnt
-    100018: GoatRig_l_FrontLeg_Knee1SHJnt
-    100020: GoatRig_l_FrontLeg_Knee2SHJnt
-    100022: GoatRig_l_FrontLeg_ToeSHJnt
-    100024: GoatRig_l_HindLeg_AnkleSHJnt
-    100026: GoatRig_l_HindLeg_BallSHJnt
-    100028: GoatRig_l_HindLeg_HipSHJnt
-    100030: GoatRig_l_HindLeg_Knee1SHJnt
-    100032: GoatRig_l_HindLeg_Knee2SHJnt
-    100034: GoatRig_l_HindLeg_ToeSHJnt
-    100036: GoatRig_Neck_01SHJnt
-    100038: GoatRig_Neck_02SHJnt
-    100040: GoatRig_Neck_TopSHJnt
-    100042: GoatRig_r_Clavicle_01_01SHJnt
-    100044: GoatRig_r_Eye_01SHJnt
-    100046: GoatRig_r_FrontLeg_AnkleSHJnt
-    100048: GoatRig_r_FrontLeg_BallSHJnt
-    100050: GoatRig_r_FrontLeg_HipSHJnt
-    100052: GoatRig_r_FrontLeg_Knee1SHJnt
-    100054: GoatRig_r_FrontLeg_Knee2SHJnt
-    100056: GoatRig_r_FrontLeg_ToeSHJnt
-    100058: GoatRig_r_HindLeg_AnkleSHJnt
-    100060: GoatRig_r_HindLeg_BallSHJnt
-    100062: GoatRig_r_HindLeg_HipSHJnt
-    100064: GoatRig_r_HindLeg_Knee1SHJnt
-    100066: GoatRig_r_HindLeg_Knee2SHJnt
-    100068: GoatRig_r_HindLeg_ToeSHJnt
-    100070: GoatRig_ROOTSHJnt
-    100072: GoatRig_SHJntGrp
-    100074: GoatRig_Spine_01SHJnt
-    100076: GoatRig_Spine_02SHJnt
-    100078: GoatRig_Spine_TopSHJnt
-    100080: GoatRig_Tail_01
-    100082: GoatRig_Tail_01SHJnt
-    100084: GoatRig_Tail_02
-    100086: GoatRig_Tail_02SHJnt
-    100088: GoatRig_Tail_03
-    100090: GoatRig_Tail_04
-    100092: GoatRig_Tail_05
-    100094: GoatRig_Tail_TopSHJnt
-    100096: //RootNode
-    100098: SM_JapaneseBobtail_01
-    100100: SM_JapaneseBobtail_02
-    100102: SM_JapaneseBobtail_03
-    100104: SM_MaineCoon_01
-    100106: SM_MaineCoon_02
-    100108: SM_MaineCoon_03
-    100110: SM_Persian_01
-    100112: SM_Persian_02
-    100114: SM_Persian_03
-    100116: SM_RussianBlue_01
-    100118: SM_RussianBlue_02
-    100120: SM_RussianBlue_03
-    100122: SM_Siamese_01
-    100124: SM_Siamese_02
-    100126: SM_Siamese_03
-    100128: SM_Snowshoe_01
-    100130: SM_Snowshoe_02
-    100132: SM_Snowshoe_03
-    100134: SM_Somali_01
-    100136: SM_Somali_02
-    100138: SM_Somali_03
-    100140: SM_Sphynx_01
-    100142: SM_Sphynx_02
-    100144: SM_Sphynx_03
-    100146: SM_StripedTabby_01
-    100148: SM_StripedTabby_02
-    100150: SM_StripedTabby_03
-    100152: SM_Tabby_01
-    100154: SM_Tabby_02
-    100156: SM_Tabby_03
-    400000: GoatRig
-    400002: GoatRig_Head_JawEndSHJnt
-    400004: GoatRig_Head_JawSHJnt
-    400006: GoatRig_Head_TopSHJnt
-    400008: GoatRig_l_Clavicle_01_01SHJnt
-    400010: GoatRig_l_Eye_01SHJnt
-    400012: GoatRig_l_FrontLeg_AnkleSHJnt
-    400014: GoatRig_l_FrontLeg_BallSHJnt
-    400016: GoatRig_l_FrontLeg_HipSHJnt
-    400018: GoatRig_l_FrontLeg_Knee1SHJnt
-    400020: GoatRig_l_FrontLeg_Knee2SHJnt
-    400022: GoatRig_l_FrontLeg_ToeSHJnt
-    400024: GoatRig_l_HindLeg_AnkleSHJnt
-    400026: GoatRig_l_HindLeg_BallSHJnt
-    400028: GoatRig_l_HindLeg_HipSHJnt
-    400030: GoatRig_l_HindLeg_Knee1SHJnt
-    400032: GoatRig_l_HindLeg_Knee2SHJnt
-    400034: GoatRig_l_HindLeg_ToeSHJnt
-    400036: GoatRig_Neck_01SHJnt
-    400038: GoatRig_Neck_02SHJnt
-    400040: GoatRig_Neck_TopSHJnt
-    400042: GoatRig_r_Clavicle_01_01SHJnt
-    400044: GoatRig_r_Eye_01SHJnt
-    400046: GoatRig_r_FrontLeg_AnkleSHJnt
-    400048: GoatRig_r_FrontLeg_BallSHJnt
-    400050: GoatRig_r_FrontLeg_HipSHJnt
-    400052: GoatRig_r_FrontLeg_Knee1SHJnt
-    400054: GoatRig_r_FrontLeg_Knee2SHJnt
-    400056: GoatRig_r_FrontLeg_ToeSHJnt
-    400058: GoatRig_r_HindLeg_AnkleSHJnt
-    400060: GoatRig_r_HindLeg_BallSHJnt
-    400062: GoatRig_r_HindLeg_HipSHJnt
-    400064: GoatRig_r_HindLeg_Knee1SHJnt
-    400066: GoatRig_r_HindLeg_Knee2SHJnt
-    400068: GoatRig_r_HindLeg_ToeSHJnt
-    400070: GoatRig_ROOTSHJnt
-    400072: GoatRig_SHJntGrp
-    400074: GoatRig_Spine_01SHJnt
-    400076: GoatRig_Spine_02SHJnt
-    400078: GoatRig_Spine_TopSHJnt
-    400080: GoatRig_Tail_01
-    400082: GoatRig_Tail_01SHJnt
-    400084: GoatRig_Tail_02
-    400086: GoatRig_Tail_02SHJnt
-    400088: GoatRig_Tail_03
-    400090: GoatRig_Tail_04
-    400092: GoatRig_Tail_05
-    400094: GoatRig_Tail_TopSHJnt
-    400096: //RootNode
-    400098: SM_JapaneseBobtail_01
-    400100: SM_JapaneseBobtail_02
-    400102: SM_JapaneseBobtail_03
-    400104: SM_MaineCoon_01
-    400106: SM_MaineCoon_02
-    400108: SM_MaineCoon_03
-    400110: SM_Persian_01
-    400112: SM_Persian_02
-    400114: SM_Persian_03
-    400116: SM_RussianBlue_01
-    400118: SM_RussianBlue_02
-    400120: SM_RussianBlue_03
-    400122: SM_Siamese_01
-    400124: SM_Siamese_02
-    400126: SM_Siamese_03
-    400128: SM_Snowshoe_01
-    400130: SM_Snowshoe_02
-    400132: SM_Snowshoe_03
-    400134: SM_Somali_01
-    400136: SM_Somali_02
-    400138: SM_Somali_03
-    400140: SM_Sphynx_01
-    400142: SM_Sphynx_02
-    400144: SM_Sphynx_03
-    400146: SM_StripedTabby_01
-    400148: SM_StripedTabby_02
-    400150: SM_StripedTabby_03
-    400152: SM_Tabby_01
-    400154: SM_Tabby_02
-    400156: SM_Tabby_03
-    4300000: SM_StripedTabby_01
-    4300002: SM_JapaneseBobtail_01
-    4300004: SM_MaineCoon_01
-    4300006: SM_Persian_01
-    4300008: SM_RussianBlue_01
-    4300010: SM_Siamese_01
-    4300012: SM_Snowshoe_01
-    4300014: SM_Somali_01
-    4300016: SM_Sphynx_01
-    4300018: SM_Tabby_01
-    4300020: SM_JapaneseBobtail_02
-    4300022: SM_JapaneseBobtail_03
-    4300024: SM_MaineCoon_02
-    4300026: SM_MaineCoon_03
-    4300028: SM_Persian_02
-    4300030: SM_Persian_03
-    4300032: SM_RussianBlue_02
-    4300034: SM_RussianBlue_03
-    4300036: SM_Siamese_02
-    4300038: SM_Siamese_03
-    4300040: SM_Snowshoe_02
-    4300042: SM_Snowshoe_03
-    4300044: SM_Somali_02
-    4300046: SM_Somali_03
-    4300048: SM_Sphynx_02
-    4300050: SM_Sphynx_03
-    4300052: SM_StripedTabby_02
-    4300054: SM_StripedTabby_03
-    4300056: SM_Tabby_02
-    4300058: SM_Tabby_03
-    7400000: Cat_Idle
-    7400002: Cat_Walk
-    7400004: Cat_Run
-    7400006: Cat_Eat
-    7400008: Cat_SitStart
-    7400010: Cat_SitIdle
-    7400012: Cat_SitUp
-    7400014: Cat_Attack
-    7400016: Cat_Jump
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: SM_JapaneseBobtail_01
-    13700002: SM_JapaneseBobtail_02
-    13700004: SM_JapaneseBobtail_03
-    13700006: SM_MaineCoon_01
-    13700008: SM_MaineCoon_02
-    13700010: SM_MaineCoon_03
-    13700012: SM_Persian_01
-    13700014: SM_Persian_02
-    13700016: SM_Persian_03
-    13700018: SM_RussianBlue_01
-    13700020: SM_RussianBlue_02
-    13700022: SM_RussianBlue_03
-    13700024: SM_Siamese_01
-    13700026: SM_Siamese_02
-    13700028: SM_Siamese_03
-    13700030: SM_Snowshoe_01
-    13700032: SM_Snowshoe_02
-    13700034: SM_Snowshoe_03
-    13700036: SM_Somali_01
-    13700038: SM_Somali_02
-    13700040: SM_Somali_03
-    13700042: SM_Sphynx_01
-    13700044: SM_Sphynx_02
-    13700046: SM_Sphynx_03
-    13700048: SM_StripedTabby_01
-    13700050: SM_StripedTabby_02
-    13700052: SM_StripedTabby_03
-    13700054: SM_Tabby_01
-    13700056: SM_Tabby_02
-    13700058: SM_Tabby_03
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: GoatRig
+  - first:
+      1: 100002
+    second: GoatRig_Head_JawEndSHJnt
+  - first:
+      1: 100004
+    second: GoatRig_Head_JawSHJnt
+  - first:
+      1: 100006
+    second: GoatRig_Head_TopSHJnt
+  - first:
+      1: 100008
+    second: GoatRig_l_Clavicle_01_01SHJnt
+  - first:
+      1: 100010
+    second: GoatRig_l_Eye_01SHJnt
+  - first:
+      1: 100012
+    second: GoatRig_l_FrontLeg_AnkleSHJnt
+  - first:
+      1: 100014
+    second: GoatRig_l_FrontLeg_BallSHJnt
+  - first:
+      1: 100016
+    second: GoatRig_l_FrontLeg_HipSHJnt
+  - first:
+      1: 100018
+    second: GoatRig_l_FrontLeg_Knee1SHJnt
+  - first:
+      1: 100020
+    second: GoatRig_l_FrontLeg_Knee2SHJnt
+  - first:
+      1: 100022
+    second: GoatRig_l_FrontLeg_ToeSHJnt
+  - first:
+      1: 100024
+    second: GoatRig_l_HindLeg_AnkleSHJnt
+  - first:
+      1: 100026
+    second: GoatRig_l_HindLeg_BallSHJnt
+  - first:
+      1: 100028
+    second: GoatRig_l_HindLeg_HipSHJnt
+  - first:
+      1: 100030
+    second: GoatRig_l_HindLeg_Knee1SHJnt
+  - first:
+      1: 100032
+    second: GoatRig_l_HindLeg_Knee2SHJnt
+  - first:
+      1: 100034
+    second: GoatRig_l_HindLeg_ToeSHJnt
+  - first:
+      1: 100036
+    second: GoatRig_Neck_01SHJnt
+  - first:
+      1: 100038
+    second: GoatRig_Neck_02SHJnt
+  - first:
+      1: 100040
+    second: GoatRig_Neck_TopSHJnt
+  - first:
+      1: 100042
+    second: GoatRig_r_Clavicle_01_01SHJnt
+  - first:
+      1: 100044
+    second: GoatRig_r_Eye_01SHJnt
+  - first:
+      1: 100046
+    second: GoatRig_r_FrontLeg_AnkleSHJnt
+  - first:
+      1: 100048
+    second: GoatRig_r_FrontLeg_BallSHJnt
+  - first:
+      1: 100050
+    second: GoatRig_r_FrontLeg_HipSHJnt
+  - first:
+      1: 100052
+    second: GoatRig_r_FrontLeg_Knee1SHJnt
+  - first:
+      1: 100054
+    second: GoatRig_r_FrontLeg_Knee2SHJnt
+  - first:
+      1: 100056
+    second: GoatRig_r_FrontLeg_ToeSHJnt
+  - first:
+      1: 100058
+    second: GoatRig_r_HindLeg_AnkleSHJnt
+  - first:
+      1: 100060
+    second: GoatRig_r_HindLeg_BallSHJnt
+  - first:
+      1: 100062
+    second: GoatRig_r_HindLeg_HipSHJnt
+  - first:
+      1: 100064
+    second: GoatRig_r_HindLeg_Knee1SHJnt
+  - first:
+      1: 100066
+    second: GoatRig_r_HindLeg_Knee2SHJnt
+  - first:
+      1: 100068
+    second: GoatRig_r_HindLeg_ToeSHJnt
+  - first:
+      1: 100070
+    second: GoatRig_ROOTSHJnt
+  - first:
+      1: 100072
+    second: GoatRig_SHJntGrp
+  - first:
+      1: 100074
+    second: GoatRig_Spine_01SHJnt
+  - first:
+      1: 100076
+    second: GoatRig_Spine_02SHJnt
+  - first:
+      1: 100078
+    second: GoatRig_Spine_TopSHJnt
+  - first:
+      1: 100080
+    second: GoatRig_Tail_01
+  - first:
+      1: 100082
+    second: GoatRig_Tail_01SHJnt
+  - first:
+      1: 100084
+    second: GoatRig_Tail_02
+  - first:
+      1: 100086
+    second: GoatRig_Tail_02SHJnt
+  - first:
+      1: 100088
+    second: GoatRig_Tail_03
+  - first:
+      1: 100090
+    second: GoatRig_Tail_04
+  - first:
+      1: 100092
+    second: GoatRig_Tail_05
+  - first:
+      1: 100094
+    second: GoatRig_Tail_TopSHJnt
+  - first:
+      1: 100096
+    second: //RootNode
+  - first:
+      1: 100098
+    second: SM_JapaneseBobtail_01
+  - first:
+      1: 100100
+    second: SM_JapaneseBobtail_02
+  - first:
+      1: 100102
+    second: SM_JapaneseBobtail_03
+  - first:
+      1: 100104
+    second: SM_MaineCoon_01
+  - first:
+      1: 100106
+    second: SM_MaineCoon_02
+  - first:
+      1: 100108
+    second: SM_MaineCoon_03
+  - first:
+      1: 100110
+    second: SM_Persian_01
+  - first:
+      1: 100112
+    second: SM_Persian_02
+  - first:
+      1: 100114
+    second: SM_Persian_03
+  - first:
+      1: 100116
+    second: SM_RussianBlue_01
+  - first:
+      1: 100118
+    second: SM_RussianBlue_02
+  - first:
+      1: 100120
+    second: SM_RussianBlue_03
+  - first:
+      1: 100122
+    second: SM_Siamese_01
+  - first:
+      1: 100124
+    second: SM_Siamese_02
+  - first:
+      1: 100126
+    second: SM_Siamese_03
+  - first:
+      1: 100128
+    second: SM_Snowshoe_01
+  - first:
+      1: 100130
+    second: SM_Snowshoe_02
+  - first:
+      1: 100132
+    second: SM_Snowshoe_03
+  - first:
+      1: 100134
+    second: SM_Somali_01
+  - first:
+      1: 100136
+    second: SM_Somali_02
+  - first:
+      1: 100138
+    second: SM_Somali_03
+  - first:
+      1: 100140
+    second: SM_Sphynx_01
+  - first:
+      1: 100142
+    second: SM_Sphynx_02
+  - first:
+      1: 100144
+    second: SM_Sphynx_03
+  - first:
+      1: 100146
+    second: SM_StripedTabby_01
+  - first:
+      1: 100148
+    second: SM_StripedTabby_02
+  - first:
+      1: 100150
+    second: SM_StripedTabby_03
+  - first:
+      1: 100152
+    second: SM_Tabby_01
+  - first:
+      1: 100154
+    second: SM_Tabby_02
+  - first:
+      1: 100156
+    second: SM_Tabby_03
+  - first:
+      4: 400000
+    second: GoatRig
+  - first:
+      4: 400002
+    second: GoatRig_Head_JawEndSHJnt
+  - first:
+      4: 400004
+    second: GoatRig_Head_JawSHJnt
+  - first:
+      4: 400006
+    second: GoatRig_Head_TopSHJnt
+  - first:
+      4: 400008
+    second: GoatRig_l_Clavicle_01_01SHJnt
+  - first:
+      4: 400010
+    second: GoatRig_l_Eye_01SHJnt
+  - first:
+      4: 400012
+    second: GoatRig_l_FrontLeg_AnkleSHJnt
+  - first:
+      4: 400014
+    second: GoatRig_l_FrontLeg_BallSHJnt
+  - first:
+      4: 400016
+    second: GoatRig_l_FrontLeg_HipSHJnt
+  - first:
+      4: 400018
+    second: GoatRig_l_FrontLeg_Knee1SHJnt
+  - first:
+      4: 400020
+    second: GoatRig_l_FrontLeg_Knee2SHJnt
+  - first:
+      4: 400022
+    second: GoatRig_l_FrontLeg_ToeSHJnt
+  - first:
+      4: 400024
+    second: GoatRig_l_HindLeg_AnkleSHJnt
+  - first:
+      4: 400026
+    second: GoatRig_l_HindLeg_BallSHJnt
+  - first:
+      4: 400028
+    second: GoatRig_l_HindLeg_HipSHJnt
+  - first:
+      4: 400030
+    second: GoatRig_l_HindLeg_Knee1SHJnt
+  - first:
+      4: 400032
+    second: GoatRig_l_HindLeg_Knee2SHJnt
+  - first:
+      4: 400034
+    second: GoatRig_l_HindLeg_ToeSHJnt
+  - first:
+      4: 400036
+    second: GoatRig_Neck_01SHJnt
+  - first:
+      4: 400038
+    second: GoatRig_Neck_02SHJnt
+  - first:
+      4: 400040
+    second: GoatRig_Neck_TopSHJnt
+  - first:
+      4: 400042
+    second: GoatRig_r_Clavicle_01_01SHJnt
+  - first:
+      4: 400044
+    second: GoatRig_r_Eye_01SHJnt
+  - first:
+      4: 400046
+    second: GoatRig_r_FrontLeg_AnkleSHJnt
+  - first:
+      4: 400048
+    second: GoatRig_r_FrontLeg_BallSHJnt
+  - first:
+      4: 400050
+    second: GoatRig_r_FrontLeg_HipSHJnt
+  - first:
+      4: 400052
+    second: GoatRig_r_FrontLeg_Knee1SHJnt
+  - first:
+      4: 400054
+    second: GoatRig_r_FrontLeg_Knee2SHJnt
+  - first:
+      4: 400056
+    second: GoatRig_r_FrontLeg_ToeSHJnt
+  - first:
+      4: 400058
+    second: GoatRig_r_HindLeg_AnkleSHJnt
+  - first:
+      4: 400060
+    second: GoatRig_r_HindLeg_BallSHJnt
+  - first:
+      4: 400062
+    second: GoatRig_r_HindLeg_HipSHJnt
+  - first:
+      4: 400064
+    second: GoatRig_r_HindLeg_Knee1SHJnt
+  - first:
+      4: 400066
+    second: GoatRig_r_HindLeg_Knee2SHJnt
+  - first:
+      4: 400068
+    second: GoatRig_r_HindLeg_ToeSHJnt
+  - first:
+      4: 400070
+    second: GoatRig_ROOTSHJnt
+  - first:
+      4: 400072
+    second: GoatRig_SHJntGrp
+  - first:
+      4: 400074
+    second: GoatRig_Spine_01SHJnt
+  - first:
+      4: 400076
+    second: GoatRig_Spine_02SHJnt
+  - first:
+      4: 400078
+    second: GoatRig_Spine_TopSHJnt
+  - first:
+      4: 400080
+    second: GoatRig_Tail_01
+  - first:
+      4: 400082
+    second: GoatRig_Tail_01SHJnt
+  - first:
+      4: 400084
+    second: GoatRig_Tail_02
+  - first:
+      4: 400086
+    second: GoatRig_Tail_02SHJnt
+  - first:
+      4: 400088
+    second: GoatRig_Tail_03
+  - first:
+      4: 400090
+    second: GoatRig_Tail_04
+  - first:
+      4: 400092
+    second: GoatRig_Tail_05
+  - first:
+      4: 400094
+    second: GoatRig_Tail_TopSHJnt
+  - first:
+      4: 400096
+    second: //RootNode
+  - first:
+      4: 400098
+    second: SM_JapaneseBobtail_01
+  - first:
+      4: 400100
+    second: SM_JapaneseBobtail_02
+  - first:
+      4: 400102
+    second: SM_JapaneseBobtail_03
+  - first:
+      4: 400104
+    second: SM_MaineCoon_01
+  - first:
+      4: 400106
+    second: SM_MaineCoon_02
+  - first:
+      4: 400108
+    second: SM_MaineCoon_03
+  - first:
+      4: 400110
+    second: SM_Persian_01
+  - first:
+      4: 400112
+    second: SM_Persian_02
+  - first:
+      4: 400114
+    second: SM_Persian_03
+  - first:
+      4: 400116
+    second: SM_RussianBlue_01
+  - first:
+      4: 400118
+    second: SM_RussianBlue_02
+  - first:
+      4: 400120
+    second: SM_RussianBlue_03
+  - first:
+      4: 400122
+    second: SM_Siamese_01
+  - first:
+      4: 400124
+    second: SM_Siamese_02
+  - first:
+      4: 400126
+    second: SM_Siamese_03
+  - first:
+      4: 400128
+    second: SM_Snowshoe_01
+  - first:
+      4: 400130
+    second: SM_Snowshoe_02
+  - first:
+      4: 400132
+    second: SM_Snowshoe_03
+  - first:
+      4: 400134
+    second: SM_Somali_01
+  - first:
+      4: 400136
+    second: SM_Somali_02
+  - first:
+      4: 400138
+    second: SM_Somali_03
+  - first:
+      4: 400140
+    second: SM_Sphynx_01
+  - first:
+      4: 400142
+    second: SM_Sphynx_02
+  - first:
+      4: 400144
+    second: SM_Sphynx_03
+  - first:
+      4: 400146
+    second: SM_StripedTabby_01
+  - first:
+      4: 400148
+    second: SM_StripedTabby_02
+  - first:
+      4: 400150
+    second: SM_StripedTabby_03
+  - first:
+      4: 400152
+    second: SM_Tabby_01
+  - first:
+      4: 400154
+    second: SM_Tabby_02
+  - first:
+      4: 400156
+    second: SM_Tabby_03
+  - first:
+      43: 4300000
+    second: SM_StripedTabby_01
+  - first:
+      43: 4300002
+    second: SM_JapaneseBobtail_01
+  - first:
+      43: 4300004
+    second: SM_MaineCoon_01
+  - first:
+      43: 4300006
+    second: SM_Persian_01
+  - first:
+      43: 4300008
+    second: SM_RussianBlue_01
+  - first:
+      43: 4300010
+    second: SM_Siamese_01
+  - first:
+      43: 4300012
+    second: SM_Snowshoe_01
+  - first:
+      43: 4300014
+    second: SM_Somali_01
+  - first:
+      43: 4300016
+    second: SM_Sphynx_01
+  - first:
+      43: 4300018
+    second: SM_Tabby_01
+  - first:
+      43: 4300020
+    second: SM_JapaneseBobtail_02
+  - first:
+      43: 4300022
+    second: SM_JapaneseBobtail_03
+  - first:
+      43: 4300024
+    second: SM_MaineCoon_02
+  - first:
+      43: 4300026
+    second: SM_MaineCoon_03
+  - first:
+      43: 4300028
+    second: SM_Persian_02
+  - first:
+      43: 4300030
+    second: SM_Persian_03
+  - first:
+      43: 4300032
+    second: SM_RussianBlue_02
+  - first:
+      43: 4300034
+    second: SM_RussianBlue_03
+  - first:
+      43: 4300036
+    second: SM_Siamese_02
+  - first:
+      43: 4300038
+    second: SM_Siamese_03
+  - first:
+      43: 4300040
+    second: SM_Snowshoe_02
+  - first:
+      43: 4300042
+    second: SM_Snowshoe_03
+  - first:
+      43: 4300044
+    second: SM_Somali_02
+  - first:
+      43: 4300046
+    second: SM_Somali_03
+  - first:
+      43: 4300048
+    second: SM_Sphynx_02
+  - first:
+      43: 4300050
+    second: SM_Sphynx_03
+  - first:
+      43: 4300052
+    second: SM_StripedTabby_02
+  - first:
+      43: 4300054
+    second: SM_StripedTabby_03
+  - first:
+      43: 4300056
+    second: SM_Tabby_02
+  - first:
+      43: 4300058
+    second: SM_Tabby_03
+  - first:
+      74: 7400000
+    second: Cat_Idle
+  - first:
+      74: 7400002
+    second: Cat_Walk
+  - first:
+      74: 7400004
+    second: Cat_Run
+  - first:
+      74: 7400006
+    second: Cat_Eat
+  - first:
+      74: 7400008
+    second: Cat_SitStart
+  - first:
+      74: 7400010
+    second: Cat_SitIdle
+  - first:
+      74: 7400012
+    second: Cat_SitUp
+  - first:
+      74: 7400014
+    second: Cat_Attack
+  - first:
+      74: 7400016
+    second: Cat_Jump
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      111: 11100000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: SM_JapaneseBobtail_01
+  - first:
+      137: 13700002
+    second: SM_JapaneseBobtail_02
+  - first:
+      137: 13700004
+    second: SM_JapaneseBobtail_03
+  - first:
+      137: 13700006
+    second: SM_MaineCoon_01
+  - first:
+      137: 13700008
+    second: SM_MaineCoon_02
+  - first:
+      137: 13700010
+    second: SM_MaineCoon_03
+  - first:
+      137: 13700012
+    second: SM_Persian_01
+  - first:
+      137: 13700014
+    second: SM_Persian_02
+  - first:
+      137: 13700016
+    second: SM_Persian_03
+  - first:
+      137: 13700018
+    second: SM_RussianBlue_01
+  - first:
+      137: 13700020
+    second: SM_RussianBlue_02
+  - first:
+      137: 13700022
+    second: SM_RussianBlue_03
+  - first:
+      137: 13700024
+    second: SM_Siamese_01
+  - first:
+      137: 13700026
+    second: SM_Siamese_02
+  - first:
+      137: 13700028
+    second: SM_Siamese_03
+  - first:
+      137: 13700030
+    second: SM_Snowshoe_01
+  - first:
+      137: 13700032
+    second: SM_Snowshoe_02
+  - first:
+      137: 13700034
+    second: SM_Snowshoe_03
+  - first:
+      137: 13700036
+    second: SM_Somali_01
+  - first:
+      137: 13700038
+    second: SM_Somali_02
+  - first:
+      137: 13700040
+    second: SM_Somali_03
+  - first:
+      137: 13700042
+    second: SM_Sphynx_01
+  - first:
+      137: 13700044
+    second: SM_Sphynx_02
+  - first:
+      137: 13700046
+    second: SM_Sphynx_03
+  - first:
+      137: 13700048
+    second: SM_StripedTabby_01
+  - first:
+      137: 13700050
+    second: SM_StripedTabby_02
+  - first:
+      137: 13700052
+    second: SM_StripedTabby_03
+  - first:
+      137: 13700054
+    second: SM_Tabby_01
+  - first:
+      137: 13700056
+    second: SM_Tabby_02
+  - first:
+      137: 13700058
+    second: SM_Tabby_03
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 1
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 3
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths:
     - GoatRig/GoatRig_SHJntGrp/GoatRig_ROOTSHJnt/GoatRig_Spine_01SHJnt/GoatRig_Spine_02SHJnt/GoatRig_Spine_TopSHJnt
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Cat_Idle
       takeName: Take 001
+      internalID: 0
       firstFrame: 1
       lastFrame: 120
       wrapMode: 0
@@ -261,6 +729,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
@@ -435,9 +904,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_Walk
       takeName: Take 001
+      internalID: 0
       firstFrame: 130
       lastFrame: 165
       wrapMode: 0
@@ -445,6 +916,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
@@ -619,9 +1091,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_Run
       takeName: Take 001
+      internalID: 0
       firstFrame: 180
       lastFrame: 195
       wrapMode: 0
@@ -629,6 +1103,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
@@ -803,9 +1278,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_Eat
       takeName: Take 001
+      internalID: 0
       firstFrame: 210
       lastFrame: 330
       wrapMode: 0
@@ -813,6 +1290,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
@@ -987,9 +1465,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_SitStart
       takeName: Take 001
+      internalID: 0
       firstFrame: 350
       lastFrame: 386
       wrapMode: 0
@@ -997,6 +1477,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1171,9 +1652,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_SitIdle
       takeName: Take 001
+      internalID: 0
       firstFrame: 390
       lastFrame: 440
       wrapMode: 0
@@ -1181,6 +1664,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
       loopBlendOrientation: 1
@@ -1355,9 +1839,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_SitUp
       takeName: Take 001
+      internalID: 0
       firstFrame: 450
       lastFrame: 484
       wrapMode: 0
@@ -1365,6 +1851,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1539,9 +2026,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_Attack
       takeName: Take 001
+      internalID: 0
       firstFrame: 620
       lastFrame: 655
       wrapMode: 0
@@ -1549,6 +2038,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1723,9 +2213,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: Cat_Jump
       takeName: Take 001
+      internalID: 0
       firstFrame: 670
       lastFrame: 732
       wrapMode: 0
@@ -1733,6 +2225,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
@@ -1907,44 +2400,78 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
-    isReadable: 0
+      additiveReferencePoseFrame: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
+    importVisibility: 0
     importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 0
-    splitTangentsAcrossUV: 0
     normalImportMode: 1
     tangentImportMode: 1
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
