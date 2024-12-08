@@ -19,8 +19,8 @@ namespace CatNamespace
 
             if (cat.IsInteractKeyDown() && cat.CanInteract()) stateMachine.ChangeState(CatState.Interacting);
             else if (cat.IsEatKeyDown() && cat.CanEat()) stateMachine.ChangeState(CatState.Eating);
-            else if (cat.IsJumpKeyDown() && cat.CanRunJump()) stateMachine.ChangeState(CatState.RunJumping);
-            if (cat.IsJumpKeyDown() && cat.CanIdleJump()) stateMachine.ChangeState(CatState.IdleJumping);
+            else if (cat.IsJumpKeyDown() && cat.GetCurrentSpeed() == 0f) stateMachine.ChangeState(CatState.IdleJumping);
+            else if (cat.IsJumpKeyDown()) stateMachine.ChangeState(CatState.RunJumping);
         }
 
         public override bool Exit()

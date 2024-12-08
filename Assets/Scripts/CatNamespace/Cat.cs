@@ -25,7 +25,6 @@ namespace CatNamespace
         [Header("State Info")]
         [SerializeField] private CatState currentState;
         [SerializeField] private float currentSpeed;
-        public bool allowedToIdleJump;
 
         [Header("Input Info")]
         [SerializeField] private Vector2 lookInput;
@@ -47,8 +46,6 @@ namespace CatNamespace
 
         public bool CanEat() => currentSpeed <= gameConstants.maxMoveSpeedToEat;
         public bool CanInteract() => currentSpeed <= gameConstants.maxMoveSpeedToInteract;
-        public bool CanIdleJump() => currentSpeed <= gameConstants.maxMoveSpeedToIdleJump && allowedToIdleJump;
-        public bool CanRunJump() => currentSpeed >= gameConstants.minMoveSpeedToRunJump;
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
