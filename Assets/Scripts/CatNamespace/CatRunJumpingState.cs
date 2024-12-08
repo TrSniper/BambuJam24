@@ -1,6 +1,9 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using DG.Tweening.Plugins.Options;
 using InspectorLogger;
 using ScriptableObjects;
+using UnityEngine;
 
 namespace CatNamespace
 {
@@ -15,12 +18,20 @@ namespace CatNamespace
             base.Enter();
             cat.Log("Entering Jumping State", LogStyles.StatePositive);
             cat.PlayRunJumpAnimation();
+            JumpExtra();
 
             isJumping = true;
             await UniTask.WaitForSeconds(gameConstants.runJumpAnimationDuration);
             isJumping = false;
 
             stateMachine.ChangeState(CatState.Locomotion);
+        }
+
+        private async UniTaskVoid JumpExtra()
+        {
+            await UniTask.WaitForSeconds(gameConstants.runJumpAnimationForceDelay);
+            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationForwardForce * cat.transform.forward, ForceMode.Impulse);
+            cat.GetRigidbody().AddForce(gameConstants.runJumpAnimationUpForce * cat.transform.up, ForceMode.Impulse);
         }
 
         public override void Update()

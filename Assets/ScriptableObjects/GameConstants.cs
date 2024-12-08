@@ -16,8 +16,21 @@ namespace ScriptableObjects
         public float maxWalkSpeed;
         public float catRealSpeedMultiplier;
         public float catRotationSpeed;
+        public float catRunningRotationSpeed;
         public float horizontalInputSmoothSpeed;
         public float maxAllowedAngleForMovement;
+
+        [Header("Running Jump Parameters")]
+        public float runJumpAnimationForceDelay;
+        public float runJumpAnimationForwardForce;
+        public float runJumpAnimationUpForce;
+
+        [Header("Idle Jump Parameters")]
+        public float idleJumpAnimationDelay;
+        public float idleJumpAnimationPower;
+        public float idleJumpAnimationUpRelocation;
+        public float idleJumpAnimationForwardRelocation;
+        public float idleJumpAnimationForwardCheckTolerance;
 
         [Header("Camera Parameters")]
         public float cameraSensitivity;
@@ -30,12 +43,12 @@ namespace ScriptableObjects
         public float interactAnimationDuration;
         public float eatAnimationDuration;
 
-        [Header("Movement Speeds")]
+        [Header("Speed Constraints")]
         public float maxMoveSpeedToEat;
         public float maxMoveSpeedToInteract;
         public float maxMoveSpeedToIdleJump;
-        public float maxMoveSpeedToSit;
         public float minMoveSpeedToRunJump;
+        public float minMoveSpeedToFastRotate;
 
         [Header("Animation Parameters")]
         public int animationParamSpeed = Animator.StringToHash("Speed");
