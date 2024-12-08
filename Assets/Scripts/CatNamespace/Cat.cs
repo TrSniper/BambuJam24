@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using InspectorLogger;
 using ScriptableObjects;
 using UnityEngine;
@@ -21,6 +23,9 @@ namespace CatNamespace
         [SerializeField] private Animator animator;
         [SerializeField] private Rigidbody rigidbody;
         [SerializeField] private Transform camera;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip[] walkSounds;
+        [SerializeField] private AudioClip[] runSounds;
 
         [Header("State Info")]
         [SerializeField] private CatState currentState;
@@ -33,6 +38,9 @@ namespace CatNamespace
         [SerializeField] private bool isJumpKeyDown;
         [SerializeField] private bool isEatKeyDown;
         [SerializeField] private bool isRunKey;
+
+        [Header("Sound Info")]
+        [SerializeField] private bool isWaitingForSound;
 
         public Rigidbody GetRigidbody() => rigidbody;
         public CatState GetCurrentState() => currentState;
@@ -50,6 +58,9 @@ namespace CatNamespace
 
         private CatStateMachine stateMachine;
         private CatInput catInput;
+
+        private int currentWalkSoundIndex = 0;
+        private int currentRunSoundIndex = 0;
 
         private void Start()
         {
@@ -77,6 +88,7 @@ namespace CatNamespace
             }
 
             stateMachine.Update();
+            ToggleSound();
         }
 
         private void FixedUpdate()
@@ -162,7 +174,7 @@ namespace CatNamespace
         {
             var rayOrigin = transform.position + Vector3.up * 0.5f;
 
-            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 1f, gameConstants.groundLayer))
+            if (Physics.Raycast(rayOrigin, Vector3.down, out var hit, 3f, gameConstants.groundLayer))
             {
                 var groundNormal = hit.normal;
                 var projectedNormal = Vector3.ProjectOnPlane(groundNormal, transform.right);
@@ -186,6 +198,64 @@ namespace CatNamespace
                 //Debug.LogError("No ground hit");
             }
         }
+
+        private async UniTask ToggleSound()
+        {
+            if (isWaitingForSound) return;
+
+            if (currentSpeed > 0f)
+            {
+                if (isRunKey)
+                {
+                    if (!audioSource.isPlaying || !runSounds.Contains(audioSource.clip))
+                    {
+                        await PlayNextRunSound();
+                    }
+                }
+                else
+                {
+                    if (!audioSource.isPlaying || !walkSounds.Contains(audioSource.clip))
+                    {
+                        await PlayNextWalkSound();
+                    }
+                }
+            }
+            else if (currentSpeed <= 0.15f && audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
+
+        private async UniTask PlayNextWalkSound()
+        {
+            if (isWaitingForSound || walkSounds.Length == 0) return;
+
+            isWaitingForSound = true;
+
+            var randomIndex = UnityEngine.Random.Range(0, walkSounds.Length);
+            audioSource.clip = walkSounds[randomIndex];
+            audioSource.Play();
+
+            await UniTask.WaitForSeconds(gameConstants.catWalkingSoundInterval);
+
+            isWaitingForSound = false;
+        }
+
+        private async UniTask PlayNextRunSound()
+        {
+            if (isWaitingForSound || runSounds.Length == 0) return;
+
+            isWaitingForSound = true;
+
+            var randomIndex = UnityEngine.Random.Range(0, runSounds.Length);
+            audioSource.clip = runSounds[randomIndex];
+            audioSource.Play();
+
+            await UniTask.WaitForSeconds(gameConstants.catRunningSoundInterval);
+
+            isWaitingForSound = false;
+        }
+
 
 #region AnimationMethods
 

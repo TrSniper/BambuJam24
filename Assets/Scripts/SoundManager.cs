@@ -34,7 +34,6 @@ public class SoundManager : MonoBehaviour
 
     public void PlayOneShotSound(SoundType key)
     {
-        Debug.Log("Playing sound: " + key);
         var gameSound = gameSounds.Find(x => x.key == key);
 
         if (gameSound.externalAudioSource != null)

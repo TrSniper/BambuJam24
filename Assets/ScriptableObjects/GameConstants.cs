@@ -7,6 +7,8 @@ namespace ScriptableObjects
     {
         [Header("General Parameters")]
         public LayerMask groundLayer;
+        public float catWalkingSoundInterval;
+        public float catRunningSoundInterval;
 
         [Header("Movement Parameters")]
         public float acceleration;
