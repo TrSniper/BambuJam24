@@ -25,6 +25,13 @@ namespace ScriptableObjects
         public float runJumpAnimationForwardForce;
         public float runJumpAnimationUpForce;
 
+        [Header("Idle Jump Parameters")]
+        public float idleJumpAnimationDelay;
+        public float idleJumpAnimationPower;
+        public float idleJumpAnimationUpRelocation;
+        public float idleJumpAnimationForwardRelocation;
+        public float idleJumpAnimationForwardCheckTolerance;
+
         [Header("Camera Parameters")]
         public float cameraSensitivity;
         public bool isXInverted;

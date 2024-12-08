@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using InspectorLogger;
 using ScriptableObjects;
 
@@ -14,18 +15,25 @@ namespace CatNamespace
         {
             base.Enter();
             cat.Log("Entering Jumping State", LogStyles.StatePositive);
-            cat.PlayRunJumpAnimation();
+            cat.PlayIdleJumpAnimation();
+
+            await UniTask.WaitForSeconds(gameConstants.idleJumpAnimationDelay);
+            var remainingTime = gameConstants.idleJumpAnimationDuration - gameConstants.idleJumpAnimationDelay;
+
+            var nextPosition = cat.transform.position;
+            nextPosition += cat.transform.forward * gameConstants.idleJumpAnimationForwardRelocation;
+            nextPosition += cat.transform.up * gameConstants.idleJumpAnimationUpRelocation;
+
+            cat.GetRigidbody().isKinematic = true;
+            cat.transform.DOJump(nextPosition, gameConstants.idleJumpAnimationPower, 1, remainingTime).SetEase(Ease.Linear);
 
             isJumping = true;
-            await UniTask.WaitForSeconds(gameConstants.idleJumpAnimationDuration);
+            await UniTask.WaitForSeconds(remainingTime);
             isJumping = false;
 
-            stateMachine.ChangeState(CatState.Locomotion);
-        }
+            cat.GetRigidbody().isKinematic = false;
 
-        public override void Update()
-        {
-            base.Update();
+            stateMachine.ChangeState(CatState.Locomotion);
         }
 
         public override bool Exit()
