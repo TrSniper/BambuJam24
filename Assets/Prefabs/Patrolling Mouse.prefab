@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75675325993382899}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Patrolling Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,8 @@ GameObject:
   - component: {fileID: 9144518598276630540}
   - component: {fileID: 5917977716424780420}
   - component: {fileID: 1788893142944464107}
-  m_Layer: 0
+  - component: {fileID: 3144589569150379759}
+  m_Layer: 2
   m_Name: Mouse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,6 +337,21 @@ MonoBehaviour:
   lookAt: 0.01
   loopCount: -1
   waypoints: []
+--- !u!114 &3144589569150379759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891243861305320045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d294701b42f7485c92684c686f94872a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 9600a6a6fc0829b4193d093367bb8906, type: 2}
+  patroller: {fileID: 1788893142944464107}
+  isDead: 0
 --- !u!1001 &2155211690806915829
 PrefabInstance:
   m_ObjectHideFlags: 0

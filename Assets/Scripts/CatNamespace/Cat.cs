@@ -35,6 +35,7 @@ namespace CatNamespace
         [SerializeField] private bool isRunKey;
 
         public Rigidbody GetRigidbody() => rigidbody;
+        public CatState GetCurrentState() => currentState;
         public float GetCurrentSpeed() => currentSpeed;
         public Vector2 GetLookInput() => lookInput;
         public Vector2 GetMoveInput() => moveInput;

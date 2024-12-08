@@ -8259,8 +8259,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17769028, y: 0.80949277, z: -0.3077686, w: 0.46736082}
-  m_LocalPosition: {x: 71.76871, y: 20.25, z: 58.81445}
+  m_LocalRotation: {x: 0.17769025, y: 0.80949277, z: -0.30776843, w: 0.46736103}
+  m_LocalPosition: {x: 209.20576, y: 17, z: 147}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9267,15 +9267,15 @@ PrefabInstance:
       objectReference: {fileID: 1539748289}
     - target: {fileID: 7975403140858437025, guid: b50ba409250477645b23aa79a1705d1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 79.562935
+      value: 217
       objectReference: {fileID: 0}
     - target: {fileID: 7975403140858437025, guid: b50ba409250477645b23aa79a1705d1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.25
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7975403140858437025, guid: b50ba409250477645b23aa79a1705d1d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 54.31445
+      value: 142.5
       objectReference: {fileID: 0}
     - target: {fileID: 7975403140858437025, guid: b50ba409250477645b23aa79a1705d1d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13046,7 +13046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 504227382}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WP (1)
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -20658,6 +20658,14 @@ PrefabInstance:
     - target: {fileID: 1993949580083114528, guid: cea13709a95a819489b0c0d7baa7087a, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155211690806964981, guid: cea13709a95a819489b0c0d7baa7087a, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3055711239150338504, guid: cea13709a95a819489b0c0d7baa7087a, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7375486743197695235, guid: cea13709a95a819489b0c0d7baa7087a, type: 3}
       propertyPath: m_Name
@@ -37354,23 +37362,23 @@ PrefabInstance:
       objectReference: {fileID: 1699682218}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.76871
+      value: 209.20576
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.25
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 58.81445
+      value: 147
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.46736082
+      value: 0.46736103
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.17769028
+      value: 0.17769025
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalRotation.y
@@ -37378,7 +37386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3077686
+      value: -0.30776843
       objectReference: {fileID: 0}
     - target: {fileID: 5031144738740226486, guid: b243008e37136a04ea5609164ada9d96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -39551,7 +39559,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506097151}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WP (2)
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}

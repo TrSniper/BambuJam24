@@ -31,6 +31,14 @@ namespace ScriptableObjects
         public float idleJumpAnimationUpRelocation;
         public float idleJumpAnimationForwardRelocation;
 
+        [Header("Mouse Parameters")]
+        public float mouseDeathAnimationUpDistance;
+        public float mouseDeathAnimationUpDuration;
+        public float mouseDeathAnimationZRotationAmount;
+        public float mouseDeathAnimationZRotationDuration;
+        public float mouseEatenAnimationDelay;
+        public float mouseEatenAnimationDuration;
+
         [Header("Camera Parameters")]
         public float cameraSensitivity;
         public bool isXInverted;
